@@ -106,4 +106,8 @@
     Private Sub Guna2Button8_Click(sender As Object, e As EventArgs) Handles Guna2Button8.Click
         switchPanel(Delete)
     End Sub
+
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+        switchPanel(Booking)
+    End Sub
 End Class

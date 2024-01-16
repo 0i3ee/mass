@@ -144,3 +144,4 @@ C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.vbproj.CopyComplete
 C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.pdb
+C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.Booking.resources
