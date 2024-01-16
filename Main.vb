@@ -9,7 +9,7 @@
 
     End Sub
     Public Sub SetUsername(username As String)
-        Label1.Text = username
+        Label2.Text = username
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
