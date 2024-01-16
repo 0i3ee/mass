@@ -40,22 +40,20 @@ Partial Class Main
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Panel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.leftside.SuspendLayout()
         Me.billsidebar.SuspendLayout()
         Me.emsidebar.SuspendLayout()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Guna2CustomGradientPanel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'leftside
@@ -349,76 +347,6 @@ Partial Class Main
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(240, 45)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
         '
-        'Timer1
-        '
-        Me.Timer1.Interval = 10
-        '
-        'Timer2
-        '
-        Me.Timer2.Interval = 10
-        '
-        'Timer3
-        '
-        Me.Timer3.Interval = 10
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Guna2CustomGradientPanel2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(240, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1664, 1041)
-        Me.Panel2.TabIndex = 2
-        '
-        'Guna2CustomGradientPanel2
-        '
-        Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label2)
-        Me.Guna2CustomGradientPanel2.Controls.Add(Me.Panel1)
-        Me.Guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2CustomGradientPanel2.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1664, 1041)
-        Me.Guna2CustomGradientPanel2.TabIndex = 2
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(1594, 9)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 23)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Label2"
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Panel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Panel1.FillColor3 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Panel1.FillColor4 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Panel1.Location = New System.Drawing.Point(320, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(930, 1041)
-        Me.Panel1.TabIndex = 2
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(951, 22)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(67, 23)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Label1"
-        '
         'Guna2Button1
         '
         Me.Guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
@@ -436,6 +364,57 @@ Partial Class Main
         Me.Guna2Button1.Size = New System.Drawing.Size(61, 45)
         Me.Guna2Button1.TabIndex = 0
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 10
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 10
+        '
+        'Timer3
+        '
+        Me.Timer3.Interval = 10
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(240, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(1664, 1041)
+        Me.Panel2.TabIndex = 2
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.Panel1)
+        Me.Panel3.Controls.Add(Me.Label1)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1664, 1041)
+        Me.Panel3.TabIndex = 0
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Panel1.Location = New System.Drawing.Point(395, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(930, 1041)
+        Me.Panel1.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(1613, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Label1"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -450,10 +429,8 @@ Partial Class Main
         Me.emsidebar.ResumeLayout(False)
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Guna2CustomGradientPanel2.ResumeLayout(False)
-        Me.Guna2CustomGradientPanel2.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -480,8 +457,7 @@ Partial Class Main
     Friend WithEvents Guna2Button11 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button10 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Guna2CustomGradientPanel2 As Guna.UI2.WinForms.Guna2CustomGradientPanel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Panel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
 End Class

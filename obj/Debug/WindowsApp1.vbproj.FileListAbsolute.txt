@@ -145,3 +145,4 @@ C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass\obj\Debug\WindowsApp1.pdb
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.Booking.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Booking.resources
