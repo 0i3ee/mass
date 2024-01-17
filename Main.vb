@@ -137,4 +137,11 @@
         switchPanel(Booking)
     End Sub
 
+    Private Sub Guna2Button13_Click(sender As Object, e As EventArgs) Handles Guna2Button13.Click
+        switchPanel(bill_today)
+    End Sub
+
+    Private Sub Guna2Button12_Click(sender As Object, e As EventArgs) Handles Guna2Button12.Click
+        switchPanel(bill_History)
+    End Sub
 End Class
