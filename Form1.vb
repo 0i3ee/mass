@@ -63,4 +63,8 @@ Public Class Form1
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         txtpwd.UseSystemPasswordChar = Not CheckBox1.Checked
     End Sub
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        Application.ExitThread()
+    End Sub
 End Class
