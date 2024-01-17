@@ -4,6 +4,9 @@ Imports MySql.Data.MySqlClient
 
 Public Class Booking
 
+
+
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
     End Sub
@@ -13,8 +16,44 @@ Public Class Booking
 
         ' Populate ComboBoxes
         PopulateServicesComboBox()
+        LoadTime()
+
+
 
     End Sub
+    Private Sub LoadTime()
+        Try
+            ' Use the existing connection from the module
+            ConnectDatabase()
+
+            ' Query to select all records from the Time table
+            Dim query As String = "SELECT * FROM Time"
+
+            ' Using a MySqlCommand to execute the query
+            Using cmd As New MySqlCommand(query, conn)
+                ' Using a MySqlDataReader to read the results of the query
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    ' Clear existing items in the combo box
+                    Guna2ComboBox3.Items.Clear()
+
+                    ' Loop through the records and add each Time_name to the combo box
+                    While reader.Read()
+                        Guna2ComboBox3.Items.Add(reader("Time_name").ToString())
+                    End While
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Handle any exceptions that may occur during the database operation
+            MessageBox.Show("Error loading time: " & ex.Message)
+        Finally
+            ' Close the database connection when done
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
+
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Try
@@ -219,17 +258,58 @@ Public Class Booking
             End If
         End Try
     End Sub
+    Private Sub LoadTimeslot(selectedTime As String)
+        Try
+            ' Use the existing connection from the module
+            ConnectDatabase()
+
+            ' Query to select time slots based on the provided time
+            Dim query As String = "SELECT * FROM time_slots WHERE time_id = (SELECT time_id FROM Time WHERE Time_name = @SelectedTime)"
+
+            ' Using a MySqlCommand to execute the query
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
+
+                ' Using a MySqlDataReader to read the results of the query
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    ' Clear existing items in the combo box
+                    Guna2ComboBox4.Items.Clear()
+
+                    ' Loop through the records and add each time slot to the combo box
+                    While reader.Read()
+                        Dim startTime As String = reader("time_range_start").ToString()
+                        Dim endTime As String = reader("time_range_end").ToString()
+                        Guna2ComboBox4.Items.Add(startTime & " - " & endTime)
+                    End While
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Handle any exceptions that may occur during the database operation
+            MessageBox.Show("Error loading time slots: " & ex.Message)
+        Finally
+            ' Close the database connection when done
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
 
     Private Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
         ' Assuming the selected time is related to staff availability
         ' You might need to adjust this logic based on how time is associated with staff availability
         Dim selectedTime As String = Guna2ComboBox3.SelectedItem.ToString()
 
-        ' Populate staff based on the selected time
-        PopulateStaffComboBox(selectedTime)
+        ' Get the selected day from the DateTimePicker
+        Dim selectedDay As String = DateTimePicker1.Value.ToString("dddd")
+
+        ' Populate staff based on the selected time and day
+        PopulateStaffComboBox(selectedTime, selectedDay)
+
+        LoadTimeslot(selectedTime)
+
     End Sub
 
-    Private Sub PopulateStaffComboBox(selectedTime As String)
+    Private Sub PopulateStaffComboBox(selectedTime As String, selectedDay As String)
         Guna2ComboBox1.Items.Clear()
 
         Try
@@ -237,10 +317,13 @@ Public Class Booking
             ConnectDatabase()
 
             ' Modify the query to select staff with the specified availability
-            Dim query As String = "SELECT Name FROM staff WHERE Status = 'available' AND Time = @Time"
+            ' Check if the selected day matches any entry in the 'Day' column
+            Dim query As String = "SELECT Name FROM staff WHERE Status = 'available' AND Time = @Time AND WorkDays LIKE @Day"
 
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@Time", selectedTime)
+                cmd.Parameters.AddWithValue("@Day", "%" & selectedDay & "%")
+
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
                     While reader.Read()
                         ' Add staff Name to ComboBox
@@ -257,5 +340,12 @@ Public Class Booking
             End If
         End Try
     End Sub
+
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        ' You can use the selected day in other parts of your code if needed
+        Dim selectedDay As String = DateTimePicker1.Value.ToString("dddd")
+    End Sub
+
 
 End Class

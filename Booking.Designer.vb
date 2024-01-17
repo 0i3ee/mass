@@ -24,6 +24,8 @@ Partial Class Booking
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -41,14 +43,16 @@ Partial Class Booking
         Me.Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Guna2ComboBox4 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label10)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2ComboBox4)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2ComboBox3)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label9)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label8)
@@ -78,12 +82,38 @@ Partial Class Booking
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(930, 1081)
         Me.Guna2CustomGradientPanel1.TabIndex = 3
         '
+        'Guna2ComboBox3
+        '
+        Me.Guna2ComboBox3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.Guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.Guna2ComboBox3.ItemHeight = 30
+        Me.Guna2ComboBox3.Location = New System.Drawing.Point(609, 116)
+        Me.Guna2ComboBox3.Name = "Guna2ComboBox3"
+        Me.Guna2ComboBox3.Size = New System.Drawing.Size(275, 36)
+        Me.Guna2ComboBox3.TabIndex = 31
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(493, 119)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(80, 19)
+        Me.Label9.TabIndex = 30
+        Me.Label9.Text = "Time Zone"
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(63, 377)
+        Me.Label8.Location = New System.Drawing.Point(531, 239)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(42, 19)
         Me.Label8.TabIndex = 29
@@ -99,7 +129,7 @@ Partial Class Booking
         Me.Guna2ComboBox1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.Guna2ComboBox1.ItemHeight = 30
-        Me.Guna2ComboBox1.Location = New System.Drawing.Point(609, 303)
+        Me.Guna2ComboBox1.Location = New System.Drawing.Point(609, 182)
         Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
         Me.Guna2ComboBox1.Size = New System.Drawing.Size(275, 36)
         Me.Guna2ComboBox1.TabIndex = 28
@@ -109,7 +139,7 @@ Partial Class Booking
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(498, 303)
+        Me.Label2.Location = New System.Drawing.Point(498, 182)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(75, 19)
         Me.Label2.TabIndex = 27
@@ -118,9 +148,9 @@ Partial Class Booking
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(141, 373)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(609, 239)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(277, 26)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(275, 26)
         Me.DateTimePicker1.TabIndex = 25
         Me.DateTimePicker1.Value = New Date(2024, 1, 17, 14, 54, 0, 0)
         '
@@ -152,7 +182,7 @@ Partial Class Booking
         Me.Guna2TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.Guna2TextBox2.PlaceholderText = ""
         Me.Guna2TextBox2.SelectedText = ""
-        Me.Guna2TextBox2.Size = New System.Drawing.Size(277, 91)
+        Me.Guna2TextBox2.Size = New System.Drawing.Size(743, 91)
         Me.Guna2TextBox2.TabIndex = 23
         '
         'Guna2ComboBox2
@@ -165,7 +195,7 @@ Partial Class Booking
         Me.Guna2ComboBox2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.Guna2ComboBox2.ItemHeight = 30
-        Me.Guna2ComboBox2.Location = New System.Drawing.Point(143, 303)
+        Me.Guna2ComboBox2.Location = New System.Drawing.Point(143, 239)
         Me.Guna2ComboBox2.Name = "Guna2ComboBox2"
         Me.Guna2ComboBox2.Size = New System.Drawing.Size(275, 36)
         Me.Guna2ComboBox2.TabIndex = 22
@@ -175,7 +205,7 @@ Partial Class Booking
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(46, 303)
+        Me.Label6.Location = New System.Drawing.Point(54, 239)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(59, 19)
         Me.Label6.TabIndex = 21
@@ -232,7 +262,7 @@ Partial Class Booking
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(57, 214)
+        Me.Label4.Location = New System.Drawing.Point(63, 182)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(50, 19)
         Me.Label4.TabIndex = 7
@@ -249,7 +279,7 @@ Partial Class Booking
         Me.Guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Guna2TextBox3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox3.Location = New System.Drawing.Point(141, 214)
+        Me.Guna2TextBox3.Location = New System.Drawing.Point(143, 182)
         Me.Guna2TextBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Guna2TextBox3.Name = "Guna2TextBox3"
         Me.Guna2TextBox3.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -263,7 +293,7 @@ Partial Class Booking
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(56, 123)
+        Me.Label3.Location = New System.Drawing.Point(64, 119)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 19)
         Me.Label3.TabIndex = 5
@@ -303,32 +333,31 @@ Partial Class Booking
         'Timer1
         '
         '
-        'Guna2ComboBox3
+        'Guna2ComboBox4
         '
-        Me.Guna2ComboBox3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.Guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ComboBox3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.Guna2ComboBox3.ItemHeight = 30
-        Me.Guna2ComboBox3.Items.AddRange(New Object() {"9:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM"})
-        Me.Guna2ComboBox3.Location = New System.Drawing.Point(609, 214)
-        Me.Guna2ComboBox3.Name = "Guna2ComboBox3"
-        Me.Guna2ComboBox3.Size = New System.Drawing.Size(275, 36)
-        Me.Guna2ComboBox3.TabIndex = 31
+        Me.Guna2ComboBox4.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2ComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.Guna2ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Guna2ComboBox4.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Guna2ComboBox4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2ComboBox4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.Guna2ComboBox4.ItemHeight = 30
+        Me.Guna2ComboBox4.Location = New System.Drawing.Point(143, 304)
+        Me.Guna2ComboBox4.Name = "Guna2ComboBox4"
+        Me.Guna2ComboBox4.Size = New System.Drawing.Size(275, 36)
+        Me.Guna2ComboBox4.TabIndex = 32
         '
-        'Label9
+        'Label10
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(532, 214)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(43, 19)
-        Me.Label9.TabIndex = 30
-        Me.Label9.Text = "Time"
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(70, 304)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(43, 19)
+        Me.Label10.TabIndex = 33
+        Me.Label10.Text = "Time"
         '
         'Booking
         '
@@ -354,7 +383,6 @@ Partial Class Booking
     Friend WithEvents Label3 As Label
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label7 As Label
     Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
@@ -365,4 +393,7 @@ Partial Class Booking
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label9 As Label
+    Public WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Guna2ComboBox4 As Guna.UI2.WinForms.Guna2ComboBox
 End Class

@@ -24,7 +24,7 @@ Public Class Employee
         End If
 
         ' Assuming you have CheckBox controls named chkSunday, chkMonday, ..., chkSaturday
-        If Not AnyCheckBoxChecked(Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7) Then
+        If Not AnyCheckBoxChecked(Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox4, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7) Then
             MessageBox.Show("Please select at least one workday.")
             Return
         End If
@@ -45,7 +45,7 @@ Public Class Employee
         Dim selectedDays As New List(Of String)
 
         ' Assuming you have CheckBox controls named chkSunday, chkMonday, ..., chkSaturday
-        For Each dayCheckBox As CheckBox In {Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7}
+        For Each dayCheckBox As CheckBox In {Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox4, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7}
             If dayCheckBox.Checked Then
                 selectedDays.Add(dayCheckBox.Text)
             End If
@@ -106,12 +106,16 @@ Public Class Employee
         Guna2ComboBox1.SelectedIndex = -1
 
         ' Clear CheckBoxes
-        For Each dayCheckBox As CheckBox In {Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7}
+        For Each dayCheckBox As CheckBox In {Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox4, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7}
             dayCheckBox.Checked = False
         Next
     End Sub
 
     Private Sub Guna2CustomGradientPanel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2CustomGradientPanel1.Paint
+
+    End Sub
+
+    Private Sub Guna2CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles Guna2CheckBox4.CheckedChanged
 
     End Sub
 End Class
