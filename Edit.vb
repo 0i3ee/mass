@@ -103,7 +103,7 @@ Public Class Edit
             ' ComboBox named 'Guna2ComboBox1', and CheckBoxes named 'Guna2CheckBox1' through 'Guna2CheckBox7'
             Guna2TextBox4.Text = selectedRow.Cells("Name").Value.ToString()
             Guna2TextBox2.Text = selectedRow.Cells("Phone").Value.ToString()
-            Guna2ComboBox1.SelectedItem = selectedRow.Cells("TimeSlot").Value.ToString()
+            Guna2ComboBox1.SelectedItem = selectedRow.Cells("Time").Value.ToString()
 
             ' Set the checkboxes based on the WorkDays column
             Dim workDays As String = selectedRow.Cells("WorkDays").Value.ToString()
@@ -157,13 +157,13 @@ Public Class Edit
                 ConnectDatabase()
 
                 ' Query to update the staff record
-                Dim query As String = "UPDATE staff SET Name = @Name, Phone = @Phone, TimeSlot = @TimeSlot, WorkDays = @WorkDays WHERE staff_id = @StaffId"
+                Dim query As String = "UPDATE staff SET Name = @Name, Phone = @Phone, Time = @Time, WorkDays = @WorkDays WHERE staff_id = @StaffId"
 
                 ' Create a command with parameters
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@Name", updatedName)
                     cmd.Parameters.AddWithValue("@Phone", updatedPhone)
-                    cmd.Parameters.AddWithValue("@TimeSlot", updatedTimeSlot)
+                    cmd.Parameters.AddWithValue("@Time", updatedTimeSlot)
                     cmd.Parameters.AddWithValue("@WorkDays", updatedWorkDaysString)
                     cmd.Parameters.AddWithValue("@StaffId", staffId)
 
@@ -206,6 +206,7 @@ Public Class Edit
     Private Sub Edit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize the DataGridView when the form is loaded
         ShowStaffData()
+        RefreshDataGrid()
         Guna2DataGridView1.ClearSelection()
         Label5.Visible = False
         Label2.Visible = False
@@ -224,6 +225,13 @@ Public Class Edit
 
     End Sub
 
+
+    Public Sub RefreshDataGrid()
+        ShowStaffData()
+        ' Clear the selection in the DataGridView
+        Guna2DataGridView1.ClearSelection()
+    End Sub
+
     Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
         SearchByName()
     End Sub
@@ -238,5 +246,9 @@ Public Class Edit
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Update()
+    End Sub
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        ShowStaffData()
     End Sub
 End Class
