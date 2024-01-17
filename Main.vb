@@ -95,10 +95,14 @@
         switchPanel(employeeForm)
     End Sub
 
+
+
     Private Sub Guna2Button5_Click(sender As Object, e As EventArgs) Handles Guna2Button5.Click
+
         switchPanel(list)
     End Sub
 
+    Private editForm As Edit
     Private Sub Guna2Button7_Click(sender As Object, e As EventArgs) Handles Guna2Button7.Click
         switchPanel(Edit)
     End Sub
@@ -110,4 +114,5 @@
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         switchPanel(Booking)
     End Sub
+
 End Class

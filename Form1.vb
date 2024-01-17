@@ -9,7 +9,7 @@ Public Class Form1
 
         If (dr.HasRows) Then
             ' Successful login
-            MessageBox.Show("OK")
+            MessageBox.Show("Login Succes")
 
             ' Create an instance of the Main form
             Dim frm As New Main
@@ -48,6 +48,7 @@ Public Class Form1
         If txtpwd.Text = "Type Your Password" Then
             txtpwd.Text = ""
             txtpwd.ForeColor = Color.Black
+            txtpwd.UseSystemPasswordChar = Not CheckBox1.Checked ' Set initial state
         End If
     End Sub
 
@@ -55,6 +56,11 @@ Public Class Form1
         If txtpwd.Text = "" Then
             txtpwd.Text = "Type Your Password"
             txtpwd.ForeColor = Color.Gray
+            txtpwd.UseSystemPasswordChar = False ' Reset UseSystemPasswordChar to false
         End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        txtpwd.UseSystemPasswordChar = Not CheckBox1.Checked
     End Sub
 End Class
