@@ -5,7 +5,7 @@ Imports MySql.Data.MySqlClient
 Public Class Booking
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Label10.Text = DateTime.Now.ToString("hh:mm:ss")
+
     End Sub
 
     Private Sub Booking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -13,7 +13,7 @@ Public Class Booking
 
         ' Populate ComboBoxes
         PopulateServicesComboBox()
-        PopulateStaffComboBox()
+
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
@@ -219,4 +219,43 @@ Public Class Booking
             End If
         End Try
     End Sub
+
+    Private Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
+        ' Assuming the selected time is related to staff availability
+        ' You might need to adjust this logic based on how time is associated with staff availability
+        Dim selectedTime As String = Guna2ComboBox3.SelectedItem.ToString()
+
+        ' Populate staff based on the selected time
+        PopulateStaffComboBox(selectedTime)
+    End Sub
+
+    Private Sub PopulateStaffComboBox(selectedTime As String)
+        Guna2ComboBox1.Items.Clear()
+
+        Try
+            ' Use the existing connection from the module
+            ConnectDatabase()
+
+            ' Modify the query to select staff with the specified availability
+            Dim query As String = "SELECT Name FROM staff WHERE Status = 'available' AND Time = @Time"
+
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@Time", selectedTime)
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        ' Add staff Name to ComboBox
+                        Guna2ComboBox1.Items.Add(reader("Name").ToString())
+                    End While
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            ' Make sure to close the connection when done
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
 End Class
