@@ -61,7 +61,7 @@ Public Class Employee
 
         Try
 
-            Dim query As String = "INSERT INTO staff (Name, Phone, TimeSlot, WorkDays) VALUES (@Name, @Phone, @TimeSlot, @WorkDays)"
+            Dim query As String = "INSERT INTO staff (Name, Phone, Time, WorkDays,Status) VALUES (@Name, @Phone, @TimeSlot, @WorkDays,'Available')"
 
             Using command As MySqlCommand = New MySqlCommand(query, conn)
                 ' Assuming you have TextBox controls named 'txtName' and 'txtPhone' for name and phone
@@ -98,6 +98,7 @@ Public Class Employee
 
     Private Sub ClearData()
         ' Clear TextBoxes
+        Guna2TextBox1.Clear()
         Guna2TextBox1.Clear()
         Guna2TextBox3.Clear()
 

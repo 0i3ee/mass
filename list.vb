@@ -36,12 +36,12 @@ Public Class list
             Dim selectedTimeSlot As String = Guna2ComboBox1.SelectedItem.ToString()
 
             ' Query to select records from the staff table based on the selected TimeSlot
-            Dim query As String = "SELECT * FROM staff WHERE TimeSlot = @TimeSlot"
+            Dim query As String = "SELECT * FROM staff WHERE Time = @Time"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
                 ' Add a parameter for the TimeSlot
-                da.SelectCommand.Parameters.AddWithValue("@TimeSlot", selectedTimeSlot)
+                da.SelectCommand.Parameters.AddWithValue("@Time", selectedTimeSlot)
 
                 Dim dt As New DataTable()
 
@@ -266,6 +266,11 @@ Public Class list
     End Sub
 
     Private Sub Guna2CustomGradientPanel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2CustomGradientPanel1.Paint
+
+    End Sub
+
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        ShowStaffData()
 
     End Sub
 End Class
