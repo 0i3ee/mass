@@ -109,3 +109,5 @@ C:\Users\LEGION 5 Pro\Source\Repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Edi
 C:\Users\LEGION 5 Pro\Source\Repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Employee.resources
 C:\Users\LEGION 5 Pro\Source\Repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.list.resources
 C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Booking.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.bill_History.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.bill_today.resources
