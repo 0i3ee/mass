@@ -22,10 +22,13 @@ Partial Class Booking
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -39,15 +42,18 @@ Partial Class Booking
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label10)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label9)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label8)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2ComboBox1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label2)
-        Me.Guna2CustomGradientPanel1.Controls.Add(Me.DateTimePicker2)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.DateTimePicker1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label7)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2TextBox2)
@@ -72,6 +78,39 @@ Partial Class Booking
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(930, 1081)
         Me.Guna2CustomGradientPanel1.TabIndex = 3
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
+        Me.Label10.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(605, 373)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(90, 24)
+        Me.Label10.TabIndex = 31
+        Me.Label10.Text = "00:00:00"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(530, 373)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(43, 19)
+        Me.Label9.TabIndex = 30
+        Me.Label9.Text = "Time"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(63, 377)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(42, 19)
+        Me.Label8.TabIndex = 29
+        Me.Label8.Text = "Date"
+        '
         'Guna2ComboBox1
         '
         Me.Guna2ComboBox1.BackColor = System.Drawing.Color.Transparent
@@ -82,7 +121,6 @@ Partial Class Booking
         Me.Guna2ComboBox1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.Guna2ComboBox1.ItemHeight = 30
-        Me.Guna2ComboBox1.Items.AddRange(New Object() {"9:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM"})
         Me.Guna2ComboBox1.Location = New System.Drawing.Point(609, 303)
         Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
         Me.Guna2ComboBox1.Size = New System.Drawing.Size(275, 36)
@@ -99,18 +137,10 @@ Partial Class Booking
         Me.Label2.TabIndex = 27
         Me.Label2.Text = "Employee"
         '
-        'DateTimePicker2
-        '
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.DateTimePicker2.Location = New System.Drawing.Point(141, 478)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(275, 26)
-        Me.DateTimePicker2.TabIndex = 26
-        '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(143, 404)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(141, 373)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(275, 26)
         Me.DateTimePicker1.TabIndex = 25
@@ -120,7 +150,7 @@ Partial Class Booking
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(57, 638)
+        Me.Label7.Location = New System.Drawing.Point(57, 474)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(43, 19)
         Me.Label7.TabIndex = 24
@@ -137,7 +167,7 @@ Partial Class Booking
         Me.Guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Guna2TextBox2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2TextBox2.Location = New System.Drawing.Point(141, 601)
+        Me.Guna2TextBox2.Location = New System.Drawing.Point(141, 437)
         Me.Guna2TextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Guna2TextBox2.Name = "Guna2TextBox2"
         Me.Guna2TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -156,7 +186,6 @@ Partial Class Booking
         Me.Guna2ComboBox2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.Guna2ComboBox2.ItemHeight = 30
-        Me.Guna2ComboBox2.Items.AddRange(New Object() {"9:00 AM - 12:00 PM", "1:00 PM - 4:00 PM", "5:00 PM - 9:00 PM"})
         Me.Guna2ComboBox2.Location = New System.Drawing.Point(143, 303)
         Me.Guna2ComboBox2.Name = "Guna2ComboBox2"
         Me.Guna2ComboBox2.Size = New System.Drawing.Size(275, 36)
@@ -292,6 +321,9 @@ Partial Class Booking
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Booking"
         '
+        'Timer1
+        '
+        '
         'Booking
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -323,5 +355,8 @@ Partial Class Booking
     Friend WithEvents Label6 As Label
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Timer1 As Timer
 End Class

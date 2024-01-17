@@ -202,6 +202,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="O.Designer.vb">
+      <DependentUpon>O.vb</DependentUpon>
+    </Compile>
+    <Compile Include="O.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceItem.vb" />
+    <Compile Include="StaffItem.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Booking.resx">
@@ -259,6 +267,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\padlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
