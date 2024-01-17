@@ -274,5 +274,9 @@
   <ItemGroup>
     <None Include="Resources\refresh2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\x_icon_150997.png" />
+    <None Include="Resources\x_icon_1509971.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
