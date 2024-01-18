@@ -122,10 +122,15 @@
             Guna2Button10.Visible = True
             Guna2Button15.Visible = True
         ElseIf userRole = "staff" Then
-            ' Staff-specific functionality
+
             Guna2Button2.Visible = True
             Guna2Button3.Visible = True
             Guna2Button4.Visible = False
+            emsidebar.Visible = False
+            Guna2Button5.Visible = False
+            Guna2Button6.Visible = False
+            Guna2Button7.Visible = False
+            Guna2Button8.Visible = False
             Guna2Button9.Visible = True
             Guna2Button10.Visible = True
             Guna2Button15.Visible = False
