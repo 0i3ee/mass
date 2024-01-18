@@ -142,12 +142,6 @@
     <Compile Include="bill History.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="bill today.Designer.vb">
-      <DependentUpon>bill today.vb</DependentUpon>
-    </Compile>
-    <Compile Include="bill today.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Booking.Designer.vb">
       <DependentUpon>Booking.vb</DependentUpon>
     </Compile>
@@ -238,9 +232,6 @@
   <ItemGroup>
     <EmbeddedResource Include="bill History.resx">
       <DependentUpon>bill History.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="bill today.resx">
-      <DependentUpon>bill today.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Booking.resx">
       <DependentUpon>Booking.vb</DependentUpon>
