@@ -76,22 +76,22 @@
         Timer3.Start()
     End Sub
     Sub switchPanel(ByVal panel As Form)
-        If Edit IsNot Nothing AndAlso Edit.Visible Then
+
+        If Edit IsNot Nothing AndAlso Edit.Visible AndAlso Not Edit.IsDisposed Then
             Edit.Close()
         End If
-        If Delete IsNot Nothing AndAlso Delete.Visible Then
+        If Delete IsNot Nothing AndAlso Delete.Visible AndAlso Not Delete.IsDisposed Then
             Delete.Close()
         End If
-        If list IsNot Nothing AndAlso list.Visible Then
+        If list IsNot Nothing AndAlso list.Visible AndAlso Not list.IsDisposed Then
             list.Close()
         End If
-        If Booking IsNot Nothing AndAlso Booking.Visible Then
+        If Booking IsNot Nothing AndAlso Booking.Visible AndAlso Not Booking.IsDisposed Then
             Booking.Close()
         End If
-        If Home IsNot Nothing AndAlso Home.Visible Then
+        If Home IsNot Nothing AndAlso Home.Visible AndAlso Not Home.IsDisposed Then
             Home.Close()
         End If
-
 
         Panel1.Controls.Clear()
         panel.TopLevel = False
