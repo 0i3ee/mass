@@ -228,6 +228,7 @@
     </Compile>
     <Compile Include="ServiceItem.vb" />
     <Compile Include="StaffItem.vb" />
+    <Compile Include="timeslotitem.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bill History.resx">
