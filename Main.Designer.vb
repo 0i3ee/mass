@@ -24,12 +24,10 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.leftside = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Button15 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button14 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button11 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button10 = New Guna.UI2.WinForms.Guna2Button()
-        Me.billsidebar = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2Button12 = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button13 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button9 = New Guna.UI2.WinForms.Guna2Button()
         Me.emsidebar = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Button8 = New Guna.UI2.WinForms.Guna2Button()
@@ -40,16 +38,14 @@ Partial Class Main
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.leftside.SuspendLayout()
-        Me.billsidebar.SuspendLayout()
         Me.emsidebar.SuspendLayout()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -58,10 +54,10 @@ Partial Class Main
         '
         'leftside
         '
+        Me.leftside.Controls.Add(Me.Guna2Button15)
         Me.leftside.Controls.Add(Me.Guna2Button14)
         Me.leftside.Controls.Add(Me.Guna2Button11)
         Me.leftside.Controls.Add(Me.Guna2Button10)
-        Me.leftside.Controls.Add(Me.billsidebar)
         Me.leftside.Controls.Add(Me.Guna2Button9)
         Me.leftside.Controls.Add(Me.emsidebar)
         Me.leftside.Controls.Add(Me.Guna2Button4)
@@ -74,6 +70,24 @@ Partial Class Main
         Me.leftside.Name = "leftside"
         Me.leftside.Size = New System.Drawing.Size(240, 1041)
         Me.leftside.TabIndex = 0
+        '
+        'Guna2Button15
+        '
+        Me.Guna2Button15.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button15.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button15.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.Guna2Button15.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.Guna2Button15.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Button15.FillColor = System.Drawing.Color.FromArgb(CType(CType(160, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(151, Byte), Integer))
+        Me.Guna2Button15.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
+        Me.Guna2Button15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2Button15.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button15.Location = New System.Drawing.Point(0, 421)
+        Me.Guna2Button15.Name = "Guna2Button15"
+        Me.Guna2Button15.Size = New System.Drawing.Size(240, 45)
+        Me.Guna2Button15.TabIndex = 11
+        Me.Guna2Button15.Text = "Service"
+        Me.Guna2Button15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Guna2Button14
         '
@@ -122,59 +136,12 @@ Partial Class Main
         Me.Guna2Button10.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button10.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button10.Location = New System.Drawing.Point(0, 461)
+        Me.Guna2Button10.Location = New System.Drawing.Point(0, 376)
         Me.Guna2Button10.Name = "Guna2Button10"
         Me.Guna2Button10.Size = New System.Drawing.Size(240, 45)
         Me.Guna2Button10.TabIndex = 8
         Me.Guna2Button10.Text = "Overall"
         Me.Guna2Button10.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'billsidebar
-        '
-        Me.billsidebar.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
-        Me.billsidebar.Controls.Add(Me.Guna2Button12)
-        Me.billsidebar.Controls.Add(Me.Guna2Button13)
-        Me.billsidebar.Dock = System.Windows.Forms.DockStyle.Top
-        Me.billsidebar.Location = New System.Drawing.Point(0, 376)
-        Me.billsidebar.Name = "billsidebar"
-        Me.billsidebar.Size = New System.Drawing.Size(240, 85)
-        Me.billsidebar.TabIndex = 7
-        '
-        'Guna2Button12
-        '
-        Me.Guna2Button12.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button12.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button12.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button12.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button12.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Button12.FillColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
-        Me.Guna2Button12.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
-        Me.Guna2Button12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2Button12.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button12.Location = New System.Drawing.Point(0, 35)
-        Me.Guna2Button12.Name = "Guna2Button12"
-        Me.Guna2Button12.Size = New System.Drawing.Size(240, 35)
-        Me.Guna2Button12.TabIndex = 6
-        Me.Guna2Button12.Text = "History"
-        Me.Guna2Button12.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'Guna2Button13
-        '
-        Me.Guna2Button13.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button13.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button13.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button13.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Button13.FillColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
-        Me.Guna2Button13.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
-        Me.Guna2Button13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2Button13.ForeColor = System.Drawing.Color.Black
-        Me.Guna2Button13.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Button13.Name = "Guna2Button13"
-        Me.Guna2Button13.Size = New System.Drawing.Size(240, 35)
-        Me.Guna2Button13.TabIndex = 5
-        Me.Guna2Button13.Text = "Today"
-        Me.Guna2Button13.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
         'Guna2Button9
         '
@@ -347,6 +314,23 @@ Partial Class Main
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(240, 45)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
         '
+        'Guna2Button1
+        '
+        Me.Guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.Guna2Button1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
+        Me.Guna2Button1.Image = Global.WindowsApp1.My.Resources.Resources.icons8_menu_50
+        Me.Guna2Button1.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2Button1.Name = "Guna2Button1"
+        Me.Guna2Button1.Size = New System.Drawing.Size(61, 45)
+        Me.Guna2Button1.TabIndex = 0
+        '
         'Timer1
         '
         Me.Timer1.Interval = 10
@@ -354,10 +338,6 @@ Partial Class Main
         'Timer2
         '
         Me.Timer2.Interval = 10
-        '
-        'Timer3
-        '
-        Me.Timer3.Interval = 10
         '
         'Panel2
         '
@@ -399,23 +379,6 @@ Partial Class Main
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Label1"
         '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.Image = Global.WindowsApp1.My.Resources.Resources.icons8_menu_50
-        Me.Guna2Button1.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.Size = New System.Drawing.Size(61, 45)
-        Me.Guna2Button1.TabIndex = 0
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -426,7 +389,6 @@ Partial Class Main
         Me.Name = "Main"
         Me.Text = "Main"
         Me.leftside.ResumeLayout(False)
-        Me.billsidebar.ResumeLayout(False)
         Me.emsidebar.ResumeLayout(False)
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
@@ -449,11 +411,7 @@ Partial Class Main
     Friend WithEvents Guna2Button6 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button5 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Timer2 As Timer
-    Friend WithEvents billsidebar As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Button12 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button13 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button9 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Timer3 As Timer
     Friend WithEvents Guna2Button14 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button11 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button10 As Guna.UI2.WinForms.Guna2Button
@@ -461,4 +419,5 @@ Partial Class Main
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
+    Friend WithEvents Guna2Button15 As Guna.UI2.WinForms.Guna2Button
 End Class

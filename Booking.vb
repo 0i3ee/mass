@@ -63,73 +63,47 @@ Public Class Booking
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Closed Then
                 conn.Open()
             End If
+            Dim selectedStaffName As String = Guna2ComboBox1.SelectedItem.ToString()
+            Dim selectedService As String = Guna2ComboBox2.SelectedItem.ToString()
+            Dim selectedtimeslot As String = Guna2ComboBox4.SelectedItem.ToString()
 
-            ' Make sure the connection is open before proceeding
-            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
-                ' Get the staff_id for the selected staff
-                Dim selectedStaffItem As StaffItem = DirectCast(Guna2ComboBox1.SelectedItem, StaffItem)
-                Dim selectedStaffId As Integer = selectedStaffItem.StaffId
+            ' Query to find StaffId based on the selected staff name
+            Dim staffquery As String = "SELECT staff_Id FROM staff WHERE Name = @SelectedStaffName"
 
-                ' Get the service_id for the selected service
-                Dim selectedServiceItem As ServiceItem = DirectCast(Guna2ComboBox2.SelectedItem, ServiceItem)
-                Dim selectedServiceId As Integer = selectedServiceItem.ServiceId
+            Using staffcommand As MySqlCommand = New MySqlCommand(staffquery, conn)
+                staffcommand.Parameters.AddWithValue("@SelectedStaffName", selectedStaffName)
+                Dim selectedStaffId As Integer = Convert.ToInt32(staffcommand.ExecuteScalar())
 
-                ' Insert into bookings table
-                Dim bookingQuery As String = "INSERT INTO bookings (staff_id, service_id, booking_date, customer_name, customer_phone) " &
-                                        "VALUES (@StaffId, @ServiceId, NOW(), @CustomerName, @CustomerPhone)"
-
-                ' Insert into bills table
+                Dim Servicequery As String = "SELECT service_id FROM services WHERE service_name = @SelectedStaffName"
+                Using Servicecommand As MySqlCommand = New MySqlCommand(Servicequery, conn)
+                    Servicecommand.Parameters.AddWithValue("@SelectedStaffName", selectedService)
+                    Dim selectedServiceID As Integer = Convert.ToInt32(Servicecommand.ExecuteScalar())
 
 
-                Using command As MySqlCommand = New MySqlCommand(bookingQuery, conn)
-                    ' Insert into bookings table
-                    command.Parameters.AddWithValue("@StaffId", selectedStaffId)
-                    command.Parameters.AddWithValue("@ServiceId", selectedServiceId)
-                    command.Parameters.AddWithValue("@CustomerName", Guna2TextBox1.Text) ' Replace with actual customer name
-                    command.Parameters.AddWithValue("@CustomerPhone", Guna2TextBox3.Text) ' Replace with actual customer phone
+                    Dim timeslotquery As String = "SELECT time_slot_id FROM time_slots WHERE time_slot = @SelectedStaffName"
+                    Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
+                        timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedtimeslot)
+                        Dim slectedtimeslotID As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
 
-                    ' Execute the command for booking insertion
-                    command.ExecuteNonQuery()
 
-                    ' Retrieve the last inserted booking_id
-                    Dim lastBookingId As Integer
-                    Using getLastBookingIdCmd As MySqlCommand = New MySqlCommand("SELECT LAST_INSERT_ID()", conn)
-                        lastBookingId = Convert.ToInt32(getLastBookingIdCmd.ExecuteScalar())
+                        Dim bookingQuery As String = "INSERT INTO bookings (staff_id, service_id, booking_date, customer_name, customer_phone, time_slot_id) " &
+                                     "VALUES (@StaffId, @ServiceId, NOW(), @CustomerName, @CustomerPhone, @TimeSlotId)"
+                        Using bookingCommand As MySqlCommand = New MySqlCommand(bookingQuery, conn)
+                            bookingCommand.Parameters.AddWithValue("@StaffId", selectedStaffId)
+                            bookingCommand.Parameters.AddWithValue("@ServiceId", selectedServiceID)
+
+                            bookingCommand.Parameters.AddWithValue("@CustomerName", Guna2TextBox1.Text)
+                            bookingCommand.Parameters.AddWithValue("@CustomerPhone", Guna2TextBox3.Text)
+                            bookingCommand.Parameters.AddWithValue("@TimeSlotId", slectedtimeslotID)
+
+                            bookingCommand.ExecuteNonQuery()
+                            ClearComboBoxes()
+                            ClearTextBoxes()
+                            PopulateStaffComboBox()
+                        End Using
                     End Using
-
-                    ' Update the status of the selected staff to 'not available'
-                    Dim updateStatusQuery As String = "UPDATE staff SET Status = 'not_available' WHERE staff_id = @StaffId"
-
-                    Using updateStatusCommand As MySqlCommand = New MySqlCommand(updateStatusQuery, conn)
-                        updateStatusCommand.Parameters.AddWithValue("@StaffId", selectedStaffId)
-                        updateStatusCommand.ExecuteNonQuery()
-                    End Using
-
-                    Dim billQuery As String = "INSERT INTO bills (booking_id, total_amount, payment_status) " &
-                                              "VALUES (@BookingId, @TotalAmount, @PaymentStatus)"
-
-                    ' Insert into bills table
-                    Using billCommand As MySqlCommand = New MySqlCommand(billQuery, conn)
-                        billCommand.Parameters.AddWithValue("@BookingId", lastBookingId)
-                        ' Replace with the actual total amount and payment status
-                        billCommand.Parameters.AddWithValue("@TotalAmount", Guna2TextBox2.Text)
-                        billCommand.Parameters.AddWithValue("@PaymentStatus", "unpaid")
-
-                        ' Execute the command for bill insertion
-                        billCommand.ExecuteNonQuery()
-                    End Using
-
-                    MessageBox.Show("Booking and Bill added successfully.")
-                    ClearComboBoxes()
-                    ClearTextBoxes()
-                    PopulateStaffComboBox()
-
-
-
                 End Using
-            Else
-                MessageBox.Show("The database connection is not open.")
-            End If
+            End Using
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         Finally
@@ -137,7 +111,9 @@ Public Class Booking
                 conn.Close()
             End If
         End Try
+
     End Sub
+
     Private Sub ClearComboBoxes()
         If Guna2ComboBox1.Items.Count > 0 Then
             Guna2ComboBox1.SelectedIndex = 0 ' Set to the first item or -1 if you want no selection
@@ -274,12 +250,10 @@ Public Class Booking
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
                     ' Clear existing items in the combo box
                     Guna2ComboBox4.Items.Clear()
-
                     ' Loop through the records and add each time slot to the combo box
                     While reader.Read()
-                        Dim startTime As String = reader("time_range_start").ToString()
-                        Dim endTime As String = reader("time_range_end").ToString()
-                        Guna2ComboBox4.Items.Add(startTime & " - " & endTime)
+                        Dim time_slot As String = reader("time_slot").ToString()
+                        Guna2ComboBox4.Items.Add(time_slot)
                     End While
                 End Using
             End Using
