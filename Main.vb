@@ -2,15 +2,26 @@
     Dim sidebar As String = "Close"
     Dim Employsidebar As String = "Close"
     Dim bilsidebar As String = "Close"
-
+    Private _userRole As String
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         emsidebar.Height = 0
         billsidebar.Height = 0
 
+        CustomizeUI(userRole)
     End Sub
     Public Sub SetUsername(username As String)
         Label1.Text = username
     End Sub
+    Public Property UserRole As String
+        Get
+            Return _userRole
+        End Get
+        Set(value As String)
+            _userRole = value
+            ' Call a method to customize the UI based on the user's role
+            CustomizeUI(_userRole)
+        End Set
+    End Property
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
 
@@ -114,7 +125,26 @@
         switchPanel(employeeForm)
     End Sub
 
-
+    Private Sub CustomizeUI(userRole As String)
+        ' For example, show or hide buttons based on the user's role
+        If userRole = "admin" Then
+            ' Admin-specific functionality
+            Guna2Button2.Visible = True
+            Guna2Button3.Visible = True
+            Guna2Button4.Visible = True
+            Guna2Button9.Visible = True
+            Guna2Button10.Visible = True
+            Guna2Button15.Visible = True
+        ElseIf userRole = "staff" Then
+            ' Staff-specific functionality
+            Guna2Button2.Visible = True
+            Guna2Button3.Visible = True
+            Guna2Button4.Visible = False
+            Guna2Button9.Visible = True
+            Guna2Button10.Visible = True
+            Guna2Button15.Visible = False
+        End If
+    End Sub
 
 
     Private Sub Guna2Button5_Click(sender As Object, e As EventArgs) Handles Guna2Button5.Click
@@ -143,5 +173,9 @@
 
     Private Sub Guna2Button12_Click(sender As Object, e As EventArgs) Handles Guna2Button12.Click
         switchPanel(bill_History)
+    End Sub
+
+    Private Sub Guna2Button15_Click(sender As Object, e As EventArgs) Handles Guna2Button15.Click
+        switchPanel(Service)
     End Sub
 End Class
