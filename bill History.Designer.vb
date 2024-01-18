@@ -27,12 +27,14 @@ Partial Class bill_History
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Guna2TextBox6 = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label2)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2ComboBox1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label5)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2TextBox6)
@@ -58,9 +60,9 @@ Partial Class bill_History
         Me.Guna2ComboBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.Guna2ComboBox1.ItemHeight = 30
-        Me.Guna2ComboBox1.Location = New System.Drawing.Point(365, 94)
+        Me.Guna2ComboBox1.Location = New System.Drawing.Point(655, 43)
         Me.Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Me.Guna2ComboBox1.Size = New System.Drawing.Size(140, 36)
+        Me.Guna2ComboBox1.Size = New System.Drawing.Size(211, 36)
         Me.Guna2ComboBox1.TabIndex = 13
         '
         'Label5
@@ -105,6 +107,17 @@ Partial Class bill_History
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Bill History"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(422, 531)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(86, 19)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "Bill History"
+        '
         'bill_History
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -125,4 +138,5 @@ Partial Class bill_History
     Friend WithEvents Label5 As Label
     Friend WithEvents Guna2TextBox6 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

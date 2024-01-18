@@ -134,7 +134,6 @@ C:\Users\Advice\source\repos\mass\bin\Debug\MySqlConnector.xml
 C:\Users\Advice\source\repos\mass\bin\Debug\System.IO.Pipelines.xml
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.vbproj.AssemblyReference.cache
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.bill_History.resources
-C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.bill_today.resources
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.Booking.resources
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.Delete.resources
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.Edit.resources

@@ -4,8 +4,6 @@
     Dim bilsidebar As String = "Close"
     Private _userRole As String
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        emsidebar.Height = 0
-        billsidebar.Height = 0
 
         CustomizeUI(userRole)
     End Sub
@@ -67,24 +65,12 @@
         End If
     End Sub
 
-    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
-        If bilsidebar = "open" Then
-            billsidebar.Height += 10
-            If billsidebar.Height >= 70 Then
-                bilsidebar = "Close"
-                Timer3.Stop()
-            End If
-        Else
-            billsidebar.Height -= 10
-            If billsidebar.Height <= 0 Then
-                bilsidebar = "open"
-                Timer3.Stop()
-            End If
-        End If
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs)
+
     End Sub
 
     Private Sub Guna2Button9_Click(sender As Object, e As EventArgs) Handles Guna2Button9.Click
-        Timer3.Start()
+        switchPanel(bill_History)
     End Sub
     Sub switchPanel(ByVal panel As Form)
 
@@ -167,11 +153,9 @@
         switchPanel(Booking)
     End Sub
 
-    Private Sub Guna2Button13_Click(sender As Object, e As EventArgs) Handles Guna2Button13.Click
-        switchPanel(bill_today)
-    End Sub
 
-    Private Sub Guna2Button12_Click(sender As Object, e As EventArgs) Handles Guna2Button12.Click
+
+    Private Sub Guna2Button12_Click(sender As Object, e As EventArgs)
         switchPanel(bill_History)
     End Sub
 
