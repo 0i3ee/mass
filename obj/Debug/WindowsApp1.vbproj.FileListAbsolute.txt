@@ -110,7 +110,6 @@ C:\Users\LEGION 5 Pro\Source\Repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Emp
 C:\Users\LEGION 5 Pro\Source\Repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.list.resources
 C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Booking.resources
 C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.bill_History.resources
-C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.bill_today.resources
 C:\Users\Advice\source\repos\mass\bin\Debug\WindowsApp1.exe.config
 C:\Users\Advice\source\repos\mass\bin\Debug\WindowsApp1.exe
 C:\Users\Advice\source\repos\mass\bin\Debug\WindowsApp1.pdb
@@ -151,3 +150,5 @@ C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.pdb
 C:\Users\Advice\source\repos\mass\obj\Debug\WindowsApp1.Register.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Register.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Service.resources

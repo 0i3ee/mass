@@ -228,7 +228,11 @@
     </Compile>
     <Compile Include="ServiceItem.vb" />
     <Compile Include="StaffItem.vb" />
+<<<<<<< HEAD
     <Compile Include="TimeSlotItem.vb" />
+=======
+    <Compile Include="timeslotitem.vb" />
+>>>>>>> 59fd621bb778c70d6dca2dc941de039a23a397e9
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bill History.resx">
