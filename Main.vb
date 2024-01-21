@@ -126,6 +126,7 @@
             Guna2Button2.Visible = True
             Guna2Button3.Visible = True
             Guna2Button4.Visible = False
+            emsidebar.Visible = False
             Guna2Button9.Visible = True
             Guna2Button10.Visible = True
             Guna2Button15.Visible = False

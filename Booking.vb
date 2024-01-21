@@ -86,8 +86,8 @@ Public Class Booking
                         Dim slectedtimeslotID As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
 
 
-                        Dim bookingQuery As String = "INSERT INTO bookings (staff_id, service_id, booking_date, customer_name, customer_phone, time_slot_id) " &
-                                     "VALUES (@StaffId, @ServiceId, NOW(), @CustomerName, @CustomerPhone, @TimeSlotId)"
+                        Dim bookingQuery As String = "INSERT INTO bookings (staff_id, service_id, booking_date, customer_name, customer_phone,Status, time_slot_id,Datemassage) " &
+                                     "VALUES (@StaffId, @ServiceId, NOW(), @CustomerName, @CustomerPhone,'book', @TimeSlotId,@Datemassage)"
                         Using bookingCommand As MySqlCommand = New MySqlCommand(bookingQuery, conn)
                             bookingCommand.Parameters.AddWithValue("@StaffId", selectedStaffId)
                             bookingCommand.Parameters.AddWithValue("@ServiceId", selectedServiceID)
@@ -95,6 +95,8 @@ Public Class Booking
                             bookingCommand.Parameters.AddWithValue("@CustomerName", Guna2TextBox1.Text)
                             bookingCommand.Parameters.AddWithValue("@CustomerPhone", Guna2TextBox3.Text)
                             bookingCommand.Parameters.AddWithValue("@TimeSlotId", slectedtimeslotID)
+                            Dim daytime As DateTime = DateTimePicker1.Value
+                            bookingCommand.Parameters.AddWithValue("@Datemassage", daytime)
 
                             bookingCommand.ExecuteNonQuery()
                             ClearComboBoxes()
