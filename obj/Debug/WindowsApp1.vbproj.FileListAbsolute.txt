@@ -193,3 +193,4 @@ C:\Users\Advice\Source\Repos\mass1\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass1\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass1\obj\Debug\WindowsApp1.pdb
 C:\Users\Advice\source\repos\mass1\obj\Debug\WindowsApp1.CheckBillForm.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.CheckBillForm.resources

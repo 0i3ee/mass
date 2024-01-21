@@ -73,42 +73,7 @@ Public Class Home
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
 
-            ' Check if there is at least one booking with status 'book'
-            If HasBookingsWithStatus(conn, "book") Then
-                ' Replace the following query with your specific criteria
-                Dim updateQuery As String = "UPDATE bookings SET status = 'pending' WHERE status = 'book' LIMIT 1"
-
-                Using updateCmd As New MySqlCommand(updateQuery, conn)
-                    ' Execute the update query
-                    updateCmd.ExecuteNonQuery()
-
-                    ' Show a message or perform any other necessary actions
-                    MessageBox.Show("Booking status updated to 'pending'.")
-
-                    ' Optionally hide GroupBox1 or leave it visible
-                    ' GroupBox1.Hide()
-
-                    ' Show booking information
-                    ShowBookingInfo()
-                End Using
-            Else
-                ' No bookings found with status 'book'
-                ShowBookingInfo()
-                MessageBox.Show("No bookings found with status 'book'.")
-            End If
-        Catch ex As Exception
-            ' Handle any exceptions that may occur during the database operation
-            MessageBox.Show("Error updating booking status: " & ex.Message)
-        Finally
-            ' Close the database connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click

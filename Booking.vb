@@ -1,10 +1,8 @@
-﻿Imports System.Web.UI
-Imports Guna.UI2.WinForms
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 
 Public Class Booking
 
-
+    Dim selectedDay As String
 
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -13,13 +11,8 @@ Public Class Booking
 
     Private Sub Booking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
-
-        ' Populate ComboBoxes
-        PopulateServicesComboBox()
         LoadTime()
-
-
-
+        PopulateServicesComboBox()
     End Sub
     Private Sub LoadTime()
         Try
@@ -29,9 +22,7 @@ Public Class Booking
             ' Query to select all records from the Time table
             Dim query As String = "SELECT * FROM Time"
 
-            ' Using a MySqlCommand to execute the query
             Using cmd As New MySqlCommand(query, conn)
-                ' Using a MySqlDataReader to read the results of the query
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
                     ' Clear existing items in the combo box
                     Guna2ComboBox3.Items.Clear()
@@ -53,7 +44,38 @@ Public Class Booking
         End Try
     End Sub
 
+    Private Sub PopulateServicesComboBox()
+        Guna2ComboBox2.Items.Clear()
+        Try
+            ' Use the existing connection from the module
+            ConnectDatabase()
+            Dim query As String = "SELECT service_id, service_name, price FROM services"
+            Using cmd As New MySqlCommand(query, conn)
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        ' Create a custom class to store service_id, service_name, and price
+                        Dim serviceItem As New ServiceItem()
+                        serviceItem.ServiceId = Convert.ToInt32(reader("service_id"))
+                        serviceItem.ServiceName = reader("service_name").ToString()
+                        serviceItem.Price = Convert.ToDecimal(reader("price"))
 
+                        ' Add serviceItem to ComboBox
+                        Guna2ComboBox2.Items.Add(serviceItem)
+
+                        ' Optionally, you can set the display text
+                        ' Guna2ComboBox2.Items.Add(serviceItem.ServiceName)
+                    End While
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            ' Make sure to close the connection when done
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Try
@@ -101,7 +123,7 @@ Public Class Booking
                             bookingCommand.ExecuteNonQuery()
                             ClearComboBoxes()
                             ClearTextBoxes()
-                            PopulateStaffComboBox()
+
                         End Using
                     End Using
                 End Using
@@ -118,15 +140,27 @@ Public Class Booking
 
     Private Sub ClearComboBoxes()
         If Guna2ComboBox1.Items.Count > 0 Then
-            Guna2ComboBox1.SelectedIndex = 0 ' Set to the first item or -1 if you want no selection
+            Guna2ComboBox1.SelectedIndex = -1 ' Set to the first item or -1 if you want no selection
         Else
             Guna2ComboBox1.SelectedItem = Nothing
         End If
 
         If Guna2ComboBox2.Items.Count > 0 Then
-            Guna2ComboBox2.SelectedIndex = 0 ' Set to the first item or -1 if you want no selection
+            Guna2ComboBox2.SelectedIndex = -1 ' Set to the first item or -1 if you want no selection
         Else
             Guna2ComboBox2.SelectedItem = Nothing
+        End If
+
+        If Guna2ComboBox4.SelectedItem > 0 Then
+            Guna2ComboBox4.SelectedIndex = -1 ' Set to the first item or -1 if you want no selection
+        Else
+            Guna2ComboBox4.SelectedItem = Nothing
+        End If
+
+        If Guna2ComboBox3.Items.Count > 0 Then
+            Guna2ComboBox3.SelectedIndex = -1 ' Set to the first item or -1 if you want no selection
+        Else
+            Guna2ComboBox3.SelectedItem = Nothing
         End If
     End Sub
 
@@ -136,74 +170,7 @@ Public Class Booking
         Guna2TextBox3.Clear()
         ' Add more TextBoxes as needed
     End Sub
-    Private Sub PopulateServicesComboBox()
-        Guna2ComboBox2.Items.Clear()
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
-            Dim query As String = "SELECT service_id, service_name, price FROM services"
-            Using cmd As New MySqlCommand(query, conn)
-                Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    While reader.Read()
-                        ' Create a custom class to store service_id, service_name, and price
-                        Dim serviceItem As New ServiceItem()
-                        serviceItem.ServiceId = Convert.ToInt32(reader("service_id"))
-                        serviceItem.ServiceName = reader("service_name").ToString()
-                        serviceItem.Price = Convert.ToDecimal(reader("price"))
 
-                        ' Add serviceItem to ComboBox
-                        Guna2ComboBox2.Items.Add(serviceItem)
-
-                        ' Optionally, you can set the display text
-                        ' Guna2ComboBox2.Items.Add(serviceItem.ServiceName)
-                    End While
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
-        Finally
-            ' Make sure to close the connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-
-
-    Private Sub PopulateStaffComboBox()
-        Guna2ComboBox1.Items.Clear()
-
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
-
-            ' Modify the query to select staff_id along with Name
-            Dim query As String = "SELECT staff_id, Name FROM staff WHERE Status = 'available'"
-            Using cmd As New MySqlCommand(query, conn)
-                Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    While reader.Read()
-                        ' Create a custom class to store staff_id and Name
-                        Dim staffItem As New StaffItem()
-                        staffItem.StaffId = Convert.ToInt32(reader("staff_id"))
-                        staffItem.Name = reader("Name").ToString()
-
-                        ' Add staffItem to ComboBox
-                        Guna2ComboBox1.Items.Add(staffItem)
-
-                        ' Optionally, you can set the display text
-                        ' Guna2ComboBox1.Items.Add(staffItem.Name)
-                    End While
-                End Using
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
-        Finally
-            ' Make sure to close the connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
 
 
     Private Sub Guna2ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox2.SelectedIndexChanged
@@ -211,7 +178,7 @@ Public Class Booking
         ConnectDatabase()
 
         Try
-            Dim selectedService As String = Guna2ComboBox2.SelectedItem.ToString()
+            Dim selectedService As String = If(Guna2ComboBox2.SelectedItem IsNot Nothing, Guna2ComboBox2.SelectedItem.ToString(), "")
 
             ' Query to retrieve the price of the selected service
             Dim query As String = "SELECT price FROM services WHERE service_name = @ServiceName"
@@ -236,18 +203,21 @@ Public Class Booking
             End If
         End Try
     End Sub
-    Private Sub LoadTimeslot(selectedTime As String)
+    Private Sub LoadTimeslot(selectedTime As String, selectedstaff As String)
         Try
             ' Use the existing connection from the module
             ConnectDatabase()
-
-            ' Query to select time slots based on the provided time
-            Dim query As String = "SELECT * FROM time_slots WHERE time_id = (SELECT time_id FROM Time WHERE Time_name = @SelectedTime)"
-
-            ' Using a MySqlCommand to execute the query
+            Dim daytime As DateTime = DateTimePicker1.Value
+            Dim formattedDateTime As String = daytime.ToString("yyyy-MM-dd")
+            Dim query As String = "SELECT time_slots.time_slot " &
+               "FROM time_slots " &
+               "LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id " &
+               "LEFT JOIN staff ON bookings.staff_id = staff.staff_id " &
+               "WHERE time_slots.time_id = @SelectedTime AND (bookings.Datemassage != @SelectedDate OR bookings.Datemassage IS NULL);"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
-
+                cmd.Parameters.AddWithValue("@selectedstaff", selectedstaff)
+                cmd.Parameters.AddWithValue("@SelectedDate", formattedDateTime)
                 ' Using a MySqlDataReader to read the results of the query
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
                     ' Clear existing items in the combo box
@@ -270,40 +240,50 @@ Public Class Booking
         End Try
     End Sub
 
-    Private Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
-        ' Assuming the selected time is related to staff availability
-        ' You might need to adjust this logic based on how time is associated with staff availability
-        Dim selectedTime As String = Guna2ComboBox3.SelectedItem.ToString()
+    Public Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
 
-        ' Get the selected day from the DateTimePicker
         Dim selectedDay As String = DateTimePicker1.Value.ToString("dddd")
+        ConnectDatabase()
 
-        ' Populate staff based on the selected time and day
-        PopulateStaffComboBox(selectedTime, selectedDay)
+        Try
+            Dim selectedTimeID As String = If(Guna2ComboBox3.SelectedItem IsNot Nothing, Guna2ComboBox3.SelectedItem.ToString(), "")
 
-        LoadTimeslot(selectedTime)
+            Dim timeslotquery As String = "SELECT time_id FROM time WHERE Time_name = @SelectedStaffName"
+            Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
+                timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedTimeID)
+                Dim selectedTime As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
+
+                PopulateStaffComboBox(selectedTime, selectedDay)
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+
+
 
     End Sub
 
     Private Sub PopulateStaffComboBox(selectedTime As String, selectedDay As String)
-        Guna2ComboBox1.Items.Clear()
-
         Try
             ' Use the existing connection from the module
             ConnectDatabase()
 
             ' Modify the query to select staff with the specified availability
             ' Check if the selected day matches any entry in the 'Day' column
-            Dim query As String = "SELECT Name FROM staff WHERE Status = 'available' AND Time = @Time AND WorkDays LIKE @Day"
-
+            Dim query As String = "SELECT Name FROM staff WHERE time_id = @Time AND Status = 'available' AND WorkDays LIKE @Day"
+            Guna2ComboBox1.Items.Clear()
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@Time", selectedTime)
                 cmd.Parameters.AddWithValue("@Day", "%" & selectedDay & "%")
 
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
                     While reader.Read()
-                        ' Add staff Name to ComboBox
-                        Guna2ComboBox1.Items.Add(reader("Name").ToString())
+                        Dim staff_name As String = reader("Name").ToString()
+                        Guna2ComboBox1.Items.Add(staff_name)
                     End While
                 End Using
             End Using
@@ -318,10 +298,34 @@ Public Class Booking
     End Sub
 
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        ' You can use the selected day in other parts of your code if needed
-        Dim selectedDay As String = DateTimePicker1.Value.ToString("dddd")
+    Public Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        selectedDay = DateTimePicker1.Value.ToString("dddd")
     End Sub
 
+    Private Sub Guna2ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox1.SelectedIndexChanged
 
+
+        Dim selectedstaff As String = If(Guna2ComboBox1.SelectedItem IsNot Nothing, Guna2ComboBox1.SelectedItem.ToString(), "")
+        ConnectDatabase()
+
+        Try
+            Dim selectedTimeID As String = If(Guna2ComboBox3.SelectedItem IsNot Nothing, Guna2ComboBox3.SelectedItem.ToString(), "")
+
+            Dim timeslotquery As String = "SELECT time_id FROM time WHERE Time_name = @SelectedStaffName"
+            Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
+                timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedTimeID)
+                Dim selectedTime As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
+
+                LoadTimeslot(selectedTime, selectedstaff)
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+
+
+    End Sub
 End Class
