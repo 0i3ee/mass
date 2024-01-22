@@ -46,21 +46,21 @@ Public Class Home
                 conn.Close()
             End If
         End Try
+    End Sub
 
-        ' ... (Similar code for other labels)
+    Private Sub CustomizeButtonStyle(button As Button)
+        button.Font = New System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        button.Size = New System.Drawing.Size(287, 198)
+        button.Location = New System.Drawing.Point(12, 12)
+        button.UseVisualStyleBackColor = True
+        button.ForeColor = Color.Black
+    End Sub
 
-        ' Increment the counter for the next set of labels
-        labelCounter += 4 ' Incremented by 4 to accommodate the new column
-        End While
-        Else
-        ' No bookings found
-        MessageBox.Show("No bookings found with status 'book'.")
-        End If
+    Private Sub Button_Click(sender As Object, e As EventArgs)
+        Dim clickedButton As Button = DirectCast(sender, Button)
+        MessageBox.Show("Button Clicked: " & clickedButton.Text, "Button Clicked", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 
-        ' Close the reader
-        reader.Close()
-        End Using
-        Catch ex As Exception
     Private Function GetServiceName(serviceId As Integer) As String
         Try
             Using connection As New MySqlConnection(conn.ConnectionString)
@@ -80,142 +80,6 @@ Public Class Home
             Return "Unknown Service"
         End Try
     End Function
-        ' Close the reader
-        reader.Close()
-        End Using
-    Catch ex As Exception
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
-
-            ' Check if there is at least one booking with status 'pending'
-            If HasBookingsWithStatusa(conn, "pending") Then
-                ' Show the form to check the bill
-                ' Pass the selected booking information to the CheckBillForm
-                Dim selectedBooking As BookingInfo = bookingList.FirstOrDefault(Function(x) x.Status = "pending")
-                If selectedBooking IsNot Nothing Then
-                    Dim checkBillForm As New CheckBillForm(selectedBooking)
-                    checkBillForm.ShowDialog()
-                Else
-                    MessageBox.Show("No pending bookings found.")
-                End If
-            Else
-                ' No bookings found with status 'pending'
-                MessageBox.Show("No bookings found with status 'pending'.")
-            End If
-        Catch ex As Exception
-            ' Handle any exceptions that may occur during the database operation
-            MessageBox.Show("Error checking bill: " & ex.Message)
-        Finally
-            ' Close the database connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-                ' Close the reader
-                reader.Close()
-            End Using
-    Catch ex As Exception
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
-
-            ' Check if there is at least one booking with status 'pending'
-            If HasBookingsWithStatusa(conn, "pending") Then
-                ' Show the form to check the bill
-                ' Pass the selected booking information to the CheckBillForm
-                Dim selectedBooking As BookingInfo = bookingList.FirstOrDefault(Function(x) x.Status = "pending")
-                If selectedBooking IsNot Nothing Then
-                    Dim checkBillForm As New CheckBillForm(selectedBooking)
-                    checkBillForm.ShowDialog()
-                Else
-                    MessageBox.Show("No pending bookings found.")
-                End If
-            Else
-                ' No bookings found with status 'pending'
-                MessageBox.Show("No bookings found with status 'pending'.")
-            End If
-        Catch ex As Exception
-            ' Handle any exceptions that may occur during the database operation
-            MessageBox.Show("Error checking bill: " & ex.Message)
-        Finally
-            ' Close the database connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-                ' Close the reader
-                reader.Close()
-            End Using
-    Catch ex As Exception
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
-
-            ' Check if there is at least one booking with status 'pending'
-            If HasBookingsWithStatusa(conn, "pending") Then
-                ' Show the form to check the bill
-                ' Pass the selected booking information to the CheckBillForm
-                Dim selectedBooking As BookingInfo = bookingList.FirstOrDefault(Function(x) x.Status = "pending")
-                If selectedBooking IsNot Nothing Then
-                    Dim checkBillForm As New CheckBillForm(selectedBooking)
-                    checkBillForm.ShowDialog()
-                Else
-                    MessageBox.Show("No pending bookings found.")
-                End If
-            Else
-                ' No bookings found with status 'pending'
-                MessageBox.Show("No bookings found with status 'pending'.")
-            End If
-        Catch ex As Exception
-            ' Handle any exceptions that may occur during the database operation
-            MessageBox.Show("Error checking bill: " & ex.Message)
-        Finally
-            ' Close the database connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
-    Dim clickedButton As Button = DirectCast(sender, Button)
-        MessageBox.Show("Button Clicked: " & clickedButton.Text, "Button Clicked", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Try
-            ' Use the existing connection from the module
-            ConnectDatabase()
-
-            ' Check if there is at least one booking with status 'pending'
-            If HasBookingsWithStatusa(conn, "pending") Then
-                ' Show the form to check the bill
-                ' Pass the selected booking information to the CheckBillForm
-                Dim selectedBooking As BookingInfo = bookingList.FirstOrDefault(Function(x) x.Status = "pending")
-                If selectedBooking IsNot Nothing Then
-                    Dim checkBillForm As New CheckBillForm(selectedBooking)
-                    checkBillForm.ShowDialog()
-                Else
-                    MessageBox.Show("No pending bookings found.")
-                End If
-            Else
-                ' No bookings found with status 'pending'
-                MessageBox.Show("No bookings found with status 'pending'.")
-            End If
-        Catch ex As Exception
-            ' Handle any exceptions that may occur during the database operation
-            MessageBox.Show("Error checking bill: " & ex.Message)
-        Finally
-            ' Close the database connection when done
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-    End Sub
 
     Private Function GetTimeSlotName(timeSlotId As Integer) As String
         Try
