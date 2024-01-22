@@ -235,7 +235,7 @@
     </Compile>
     <Compile Include="ServiceItem.vb" />
     <Compile Include="StaffItem.vb" />
-<<<<<<< HEAD
+ HEAD
     <Compile Include="TimeSlotItem.vb" />
 =======
     <Compile Include="timeslotitem.vb" />
