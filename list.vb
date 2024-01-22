@@ -6,7 +6,10 @@ Public Class list
             ConnectDatabase()
 
             ' Query to select all columns from the staff table
-            Dim query As String = "SELECT * FROM staff"
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id;
+"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
@@ -27,38 +30,46 @@ Public Class list
         End Try
     End Sub
 
-    Private Sub SearchByTimeSlot()
+    Private Sub SearchStaffByTime(timeName As String)
         Try
             ' Use the ConnectDatabase method from your module
             ConnectDatabase()
 
-            ' Assuming you have a ComboBox named 'Guna2ComboBox1' for searching by TimeSlot
-            Dim selectedTimeSlot As String = Guna2ComboBox1.SelectedItem.ToString()
+            ' Check if a TimeSlot is selected
+            If Not String.IsNullOrEmpty(timeName) Then
+                ' Query to select staff records based on the selected TimeSlot
+                Dim query As String = "SELECT staff.staff_id, staff.Name, staff.Phone, staff.WorkDays, time.Time_name
+                                   FROM staff 
+                                   INNER JOIN time ON staff.time_id = time.time_id 
+                                   WHERE time.Time_name = @Time"
 
-            ' Query to select records from the staff table based on the selected TimeSlot
-            Dim query As String = "SELECT * FROM staff WHERE Time = @Time"
+                ' Create a data adapter and a data table to store the results
+                Using da As New MySqlDataAdapter(query, conn)
+                    ' Add a parameter for the TimeSlot
+                    da.SelectCommand.Parameters.AddWithValue("@Time", timeName)
 
-            ' Create a data adapter and a data table to store the results
-            Using da As New MySqlDataAdapter(query, conn)
-                ' Add a parameter for the TimeSlot
-                da.SelectCommand.Parameters.AddWithValue("@Time", selectedTimeSlot)
+                    Dim dt As New DataTable()
 
-                Dim dt As New DataTable()
+                    ' Fill the data table with the results of the query
+                    da.Fill(dt)
 
-                ' Fill the data table with the results of the query
-                da.Fill(dt)
-
-                ' Assuming you have a DataGridView named 'Guna2DataGridView1' to display the search results
-                Guna2DataGridView1.DataSource = dt
-            End Using
+                    ' Assuming you have a DataGridView named 'Guna2DataGridView1' to display the search results
+                    Guna2DataGridView1.DataSource = dt
+                End Using
+            Else
+                MessageBox.Show("Please select a time slot.")
+            End If
         Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
+            MessageBox.Show("Error in SearchStaffByTime: " & ex.ToString())
         Finally
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
         End Try
     End Sub
+
+
+
 
     Private Sub SearchByName()
         Try
@@ -69,7 +80,9 @@ Public Class list
             Dim searchName As String = Guna2TextBox1.Text.Trim()
 
             ' Query to select records from the staff table based on the entered name
-            Dim query As String = "SELECT * FROM staff WHERE Name LIKE @Name"
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id WHERE Name LIKE @Name"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
@@ -102,7 +115,9 @@ Public Class list
             Dim searchPhone As String = Guna2TextBox3.Text.Trim()
 
             ' Query to select records from the staff table based on the entered phone number
-            Dim query As String = "SELECT * FROM staff WHERE Phone LIKE @Phone"
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id WHERE Phone LIKE @Phone"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
@@ -133,7 +148,9 @@ Public Class list
             ConnectDatabase()
 
             ' Query to select records from the staff table based on selected workdays
-            Dim query As String = "SELECT * FROM staff WHERE "
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id WHERE "
 
             ' Create a list to store selected workdays
             Dim selectedWorkDays As New List(Of String)
@@ -194,18 +211,58 @@ Public Class list
             End If
         End Try
     End Sub
+    Private Sub PopulateTimeComboBox()
+        Try
+            ' Use the ConnectDatabase method from your module
+            ConnectDatabase()
+
+            ' Query to select Time_name values from the Time table
+            Dim query As String = "SELECT Time_name FROM Time"
+
+            ' Create a data adapter and a data table to store the results
+            Using da As New MySqlDataAdapter(query, conn)
+                Dim dt As New DataTable()
+
+                ' Fill the data table with the results of the query
+                da.Fill(dt)
+
+                ' Assuming you have a ComboBox named 'Guna2ComboBox1'
+                Guna2ComboBox1.DataSource = dt
+                Guna2ComboBox1.DisplayMember = "Time_name" ' Set the DisplayMember property
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
 
 
 
 
     Private Sub list_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize the DataGridView when the form is loaded
+        PopulateTimeComboBox()
+
+
         ShowStaffData()
+
+
     End Sub
 
     Private Sub Guna2ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox1.SelectedIndexChanged
-        ' Trigger the search when the selection changes in the ComboBox
-        SearchByTimeSlot()
+        Try
+            ' Assuming you have a ComboBox named 'Guna2ComboBox1' for searching by Time
+            Dim selectedTimeSlot As String = Guna2ComboBox1.Text
+
+            ' Call the SearchStaffByTime method with the selected timeName
+            SearchStaffByTime(selectedTimeSlot)
+        Catch ex As Exception
+            MessageBox.Show("Error in SelectedIndexChanged: " & ex.ToString())
+        End Try
     End Sub
 
     Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged

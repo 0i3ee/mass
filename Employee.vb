@@ -9,24 +9,24 @@ Public Class Employee
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
 
         If String.IsNullOrWhiteSpace(Guna2TextBox1.Text) Then
-            MessageBox.Show("Please enter a valid name.")
+            MessageBox.Show("ກະລຸນາປ້ອນຊື່.")
             Return
         End If
 
         If String.IsNullOrWhiteSpace(Guna2TextBox3.Text) Then
-            MessageBox.Show("Please enter a valid phone number.")
+            MessageBox.Show("ກະລຸນາປ້ອນເບີໂທ.")
             Return
         End If
 
         ' Assuming you have ComboBox named 'Guna2ComboBox1' for time slot selection
         If Guna2ComboBox1.SelectedIndex = -1 Then
-            MessageBox.Show("Please select a time slot.")
+            MessageBox.Show("ກະລຸນາເລືອກກະ.")
             Return
         End If
 
         ' Assuming you have CheckBox controls named chkSunday, chkMonday, ..., chkSaturday
         If Not AnyCheckBoxChecked(Guna2CheckBox1, Guna2CheckBox2, Guna2CheckBox3, Guna2CheckBox4, Guna2CheckBox5, Guna2CheckBox6, Guna2CheckBox7) Then
-            MessageBox.Show("Please select at least one workday.")
+            MessageBox.Show("ເລືອກມື້ເຮັດວຽກ.")
             Return
         End If
 
@@ -86,7 +86,7 @@ Public Class Employee
                 command.Parameters.AddWithValue("@WorkDays", workDays)
 
                 command.ExecuteNonQuery()
-                MessageBox.Show("Data inserted successfully.")
+                MessageBox.Show("ເພີ່ມພະນັກງານສຳເລັດ.")
                 Return True
             End Using
         Catch ex As Exception
