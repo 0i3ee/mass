@@ -78,6 +78,33 @@ Public Class Booking
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        If String.IsNullOrWhiteSpace(Guna2TextBox1.Text) Then
+            MessageBox.Show("ກະລຸນາປ້ອນຊື່.")
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox3.Text) Then
+            MessageBox.Show("ກະລຸນາປ້ອນເບີໂທ.")
+            Return
+        End If
+
+        ' Assuming you have ComboBox named 'Guna2ComboBox1' for time slot selection
+        If Guna2ComboBox2.SelectedIndex = -1 Then
+            MessageBox.Show("ກະລຸນາເລືອກບໍລິການ.")
+            Return
+        End If
+        If Guna2ComboBox3.SelectedIndex = -1 Then
+            MessageBox.Show("ກະລຸນາເລືອກກະ.")
+            Return
+        End If
+        If Guna2ComboBox1.SelectedIndex = -1 Then
+            MessageBox.Show("ກະລຸນາເລືອກພະນັກງານນວດ.")
+            Return
+        End If
+        If Guna2ComboBox4.SelectedIndex = -1 Then
+            MessageBox.Show("ກະລຸນາເລືອກໂມງນວດ.")
+            Return
+        End If
         Try
             ConnectDatabase()
 

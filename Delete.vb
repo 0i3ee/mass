@@ -6,7 +6,10 @@ Public Class Delete
             ConnectDatabase()
 
             ' Query to select all columns from the staff table
-            Dim query As String = "SELECT * FROM staff"
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id;
+"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
@@ -36,7 +39,9 @@ Public Class Delete
             Dim searchName As String = Guna2TextBox1.Text.Trim()
 
             ' Query to select records from the staff table based on the entered name
-            Dim query As String = "SELECT * FROM staff WHERE Name LIKE @Name"
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id WHERE Name LIKE @Name"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
@@ -69,7 +74,9 @@ Public Class Delete
             Dim searchPhone As String = Guna2TextBox3.Text.Trim()
 
             ' Query to select records from the staff table based on the entered phone number
-            Dim query As String = "SELECT * FROM staff WHERE Phone LIKE @Phone"
+            Dim query As String = "SELECT staff.staff_id, staff.Name,staff.Phone,staff.WorkDays ,time.Time_name
+FROM staff
+INNER JOIN time ON staff.time_id = time.time_id WHERE Phone LIKE @Phone"
 
             ' Create a data adapter and a data table to store the results
             Using da As New MySqlDataAdapter(query, conn)
@@ -121,7 +128,7 @@ Public Class Delete
                         ' Execute the delete query
                         cmd.ExecuteNonQuery()
 
-                        MessageBox.Show("Record deleted successfully.")
+                        MessageBox.Show("ລົບຂໍ້ມູນສຳເລັດ.")
                         ShowStaffData()
                     End Using
                 Catch ex As Exception
@@ -147,6 +154,7 @@ Public Class Delete
 
 
     Private Sub Delete_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Guna2DataGridView1.ClearSelection()
         ShowStaffData()
         Guna2DataGridView1.ClearSelection()
     End Sub
