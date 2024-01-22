@@ -13,6 +13,7 @@ Public Class Booking
         Timer1.Start()
         LoadTime()
         PopulateServicesComboBox()
+        LoadTime()
     End Sub
     Private Sub LoadTime()
         Try
@@ -52,18 +53,10 @@ Public Class Booking
             Dim query As String = "SELECT service_id, service_name, price FROM services"
             Using cmd As New MySqlCommand(query, conn)
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
+
+                    Guna2ComboBox3.Items.Clear()
                     While reader.Read()
-                        ' Create a custom class to store service_id, service_name, and price
-                        Dim serviceItem As New ServiceItem()
-                        serviceItem.ServiceId = Convert.ToInt32(reader("service_id"))
-                        serviceItem.ServiceName = reader("service_name").ToString()
-                        serviceItem.Price = Convert.ToDecimal(reader("price"))
-
-                        ' Add serviceItem to ComboBox
-                        Guna2ComboBox2.Items.Add(serviceItem)
-
-                        ' Optionally, you can set the display text
-                        ' Guna2ComboBox2.Items.Add(serviceItem.ServiceName)
+                        Guna2ComboBox2.Items.Add(reader("service_name").ToString())
                     End While
                 End Using
             End Using
