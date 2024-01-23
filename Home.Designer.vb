@@ -23,19 +23,17 @@ Partial Class Home
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+<<<<<<< HEAD
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Label4 = New System.Windows.Forms.Label()
+=======
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
+        Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+>>>>>>> 4efe99dc53f69d80009f99d7305abba2ef52a4c7
         Me.Guna2CustomGradientPanel1.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -46,6 +44,7 @@ Partial Class Home
         Me.Label1.Size = New System.Drawing.Size(0, 13)
         Me.Label1.TabIndex = 0
         '
+<<<<<<< HEAD
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom
@@ -133,6 +132,8 @@ Partial Class Home
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Booking Queue"
         '
+=======
+>>>>>>> 4efe99dc53f69d80009f99d7305abba2ef52a4c7
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -144,6 +145,7 @@ Partial Class Home
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Today Queue"
         '
+<<<<<<< HEAD
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -152,6 +154,47 @@ Partial Class Home
         Me.Label4.Size = New System.Drawing.Size(138, 24)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Not have Quen"
+=======
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(64, 392)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(113, 19)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Booking Queue"
+        '
+        'Panel1
+        '
+        Me.Panel1.Location = New System.Drawing.Point(68, 125)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(800, 222)
+        Me.Panel1.TabIndex = 4
+        '
+        'HScrollBar1
+        '
+        Me.HScrollBar1.Location = New System.Drawing.Point(68, 350)
+        Me.HScrollBar1.Name = "HScrollBar1"
+        Me.HScrollBar1.Size = New System.Drawing.Size(367, 27)
+        Me.HScrollBar1.TabIndex = 4
+        '
+        'Guna2CustomGradientPanel1
+        '
+        Me.Guna2CustomGradientPanel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.HScrollBar1)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Panel1)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label3)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label2)
+        Me.Guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(-2, -3)
+        Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(933, 1046)
+        Me.Guna2CustomGradientPanel1.TabIndex = 1
+>>>>>>> 4efe99dc53f69d80009f99d7305abba2ef52a4c7
         '
         'Home
         '
@@ -166,17 +209,15 @@ Partial Class Home
         Me.Text = "Home"
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
         Me.Guna2CustomGradientPanel1.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+<<<<<<< HEAD
     Friend WithEvents Label5 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
@@ -186,3 +227,9 @@ Partial Class Home
     Friend WithEvents Button4 As Button
     Friend WithEvents Label4 As Label
 End Class
+=======
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents HScrollBar1 As HScrollBar
+    Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
+End Class
+>>>>>>> 4efe99dc53f69d80009f99d7305abba2ef52a4c7
