@@ -33,6 +33,7 @@ Partial Class Home
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -62,6 +63,7 @@ Partial Class Home
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Button4)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Button1)
@@ -105,7 +107,7 @@ Partial Class Home
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 34)
+        Me.Label6.Location = New System.Drawing.Point(3, 58)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(138, 24)
         Me.Label6.TabIndex = 6
@@ -114,7 +116,7 @@ Partial Class Home
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 82)
+        Me.Label5.Location = New System.Drawing.Point(3, 93)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(138, 24)
         Me.Label5.TabIndex = 5
@@ -141,6 +143,15 @@ Partial Class Home
         Me.Label2.Size = New System.Drawing.Size(98, 19)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Today Queue"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(3, 25)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(138, 24)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Not have Quen"
         '
         'Home
         '
@@ -173,4 +184,5 @@ Partial Class Home
     Friend WithEvents Button1 As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents Button4 As Button
+    Friend WithEvents Label4 As Label
 End Class
