@@ -235,5 +235,9 @@ C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.vbproj.CopyComplete
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.pdb
+<<<<<<< HEAD
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.BookingDetailsForm.resources
+=======
 C:\Users\Advice\source\repos\mass3\obj\Debug\WindowsApp1.Overall.resources
 C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Overall.resources
+>>>>>>> main

@@ -1,12 +1,22 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Runtime.Remoting
+Imports MySql.Data.MySqlClient
 
 Public Class Home
     Private conn As MySqlConnection
-    Private verticalPosition As Integer = 12
+    Private Const VerticalMargin As Integer = 10
+    Private selectedButton As Button
+    Private checkBillPanel As Panel
+
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConnectDatabase()
         LoadButtonsFromDatabase()
+        Panel1.AutoScroll = True
 
+        checkBillPanel = New Panel()
+        checkBillPanel.Dock = DockStyle.Right
+        checkBillPanel.Width = 300
+        checkBillPanel.Visible = False
+        Me.Controls.Add(checkBillPanel)
     End Sub
 
     Private Sub ConnectDatabase()
@@ -16,7 +26,7 @@ Public Class Home
 
     Private Sub LoadButtonsFromDatabase()
         Try
-            Dim query As String = "SELECT customer_name, service_id, time_slot_id, Status FROM bookings"
+            Dim query As String = "SELECT booking_id, customer_name, service_id, time_slot_id, Status FROM bookings"
             Using command As New MySqlCommand(query, conn)
                 conn.Open()
 
@@ -27,13 +37,10 @@ Public Class Home
 
                         Dim newButton As New Button()
                         CustomizeButtonStyle(newButton)
-                        newButton.Text = $" {reader("customer_name")}                                 {serviceName}    {timeSlotName}               {reader("Status")}"
+                        newButton.Text = $" {reader("booking_id")} {reader("customer_name")} {serviceName} {timeSlotName} {reader("Status")}"
                         newButton.TextAlign = ContentAlignment.MiddleLeft
                         AddHandler newButton.Click, AddressOf Button_Click
-                        newButton.Location = New Point(verticalPosition, 12)
-
-                        ' Increment the vertical position for the next button
-                        verticalPosition += 300
+                        newButton.Dock = DockStyle.Top
 
                         Panel1.Controls.Add(newButton)
                     End While
@@ -51,15 +58,53 @@ Public Class Home
     Private Sub CustomizeButtonStyle(button As Button)
         button.Font = New System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         button.Size = New System.Drawing.Size(287, 198)
-        button.Location = New System.Drawing.Point(12, 12)
         button.UseVisualStyleBackColor = True
         button.ForeColor = Color.Black
     End Sub
 
     Private Sub Button_Click(sender As Object, e As EventArgs)
         Dim clickedButton As Button = DirectCast(sender, Button)
-        MessageBox.Show("Button Clicked: " & clickedButton.Text, "Button Clicked", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ShowCheckBillDetails(clickedButton)
     End Sub
+
+
+    Private Sub ShowCheckBillDetails(clickedButton As Button)
+        Dim bookingId As Integer = Convert.ToInt32(clickedButton.Text.Split(" "c)(1))
+
+        Dim bookingDetailsForm As New BookingDetailsForm(bookingId)
+        bookingDetailsForm.ShowDialog()
+    End Sub
+
+
+
+    Private Sub AddRowToDataTable(table As DataTable, field As String, value As String)
+        Dim newRow As DataRow = table.NewRow()
+        newRow("Field") = field
+        newRow("Value") = value
+        table.Rows.Add(newRow)
+    End Sub
+
+
+
+    Private Function GetStaffName(staffId As Integer) As String
+        Try
+            Using connection As New MySqlConnection(conn.ConnectionString)
+                connection.Open()
+                Dim query As String = "SELECT Name FROM staff WHERE staff_id = @ServiceId"
+                Using command As New MySqlCommand(query, connection)
+                    command.Parameters.AddWithValue("@ServiceId", staffId)
+                    Dim result As Object = command.ExecuteScalar()
+                    If result IsNot Nothing AndAlso Not DBNull.Value.Equals(result) Then
+                        Return result.ToString()
+                    Else
+                        Return "Unknown staff"
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            Return "Unknown staff"
+        End Try
+    End Function
 
     Private Function GetServiceName(serviceId As Integer) As String
         Try
@@ -100,4 +145,5 @@ Public Class Home
             Return "Unknown Time Slot"
         End Try
     End Function
+
 End Class
