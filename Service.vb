@@ -74,7 +74,7 @@ Public Class Service
                 command.ExecuteNonQuery()
             End Using
 
-            MessageBox.Show("Service added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("ເພີ່ມການບໍລິການສຳເລັດ.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ShowData()
             Clear()
 
