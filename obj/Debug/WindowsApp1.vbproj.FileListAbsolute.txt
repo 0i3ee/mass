@@ -199,8 +199,6 @@ C:\Users\Advice\Source\Repos\mass3\bin\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass3\bin\Debug\WindowsApp1.pdb
 C:\Users\Advice\Source\Repos\mass3\bin\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass3\bin\Debug\System.Buffers.dll
-C:\Users\Advice\Source\Repos\mass3\bin\Debug\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Advice\Source\Repos\mass3\bin\Debug\System.Memory.dll
 C:\Users\Advice\Source\Repos\mass3\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\Advice\Source\Repos\mass3\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Advice\Source\Repos\mass3\bin\Debug\System.Threading.Tasks.Extensions.dll
