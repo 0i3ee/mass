@@ -9,6 +9,7 @@ Public Class CheckBillForm
     Private totalAmountToPrint As Decimal
     Private staffNameToPrint As String
     Private Service As String
+    Private tl As String
     Private timeInToPrint As DateTime
 
     Private Sub CheckBillForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,11 +24,11 @@ Public Class CheckBillForm
     b.bill_id,
     b.total_amount,
     b.payment_status,
-    bo.booking_date,
+    bo.Datemassage,
     bo.customer_name,
     s.service_name,
-    s.price,
-    st.Name AS staff_name
+    st.Name AS staff_name,
+    tl.time_slot
 FROM
     bills b
 JOIN
@@ -35,7 +36,11 @@ JOIN
 JOIN
     services s ON bo.service_id = s.service_id
 JOIN
-    staff st ON bo.staff_id = st.staff_id where payment_status = 'unpaid'"
+    staff st ON bo.staff_id = st.staff_id 
+JOIN
+    time_slots tl ON bo.time_slot_id = tl.time_slot_id
+WHERE
+    b.payment_status = 'unpaid';"
             Dim dt As New DataTable()
 
             Try
@@ -64,10 +69,12 @@ JOIN
             totalAmountToPrint = CDec(Guna2DataGridView1.Rows(e.RowIndex).Cells("total_amount").Value)
             staffNameToPrint = Guna2DataGridView1.Rows(e.RowIndex).Cells("staff_name").Value.ToString()
             Service = Guna2DataGridView1.Rows(e.RowIndex).Cells("service_name").Value.ToString()
-            timeInToPrint = DateTime.Now
+            timeInToPrint = CDate(Guna2DataGridView1.Rows(e.RowIndex).Cells("Datemassage").Value)
+            tl = Guna2DataGridView1.Rows(e.RowIndex).Cells("time_slot").Value.ToString()
             ' Call the PrintBill method to print the bill using the selected data
             UpdatePaymentStatusToPaid(billIdToPrint)
             PrintBill()
+            LoadBillsData()
         End If
     End Sub
     Private Sub PrintBill()
@@ -141,21 +148,26 @@ JOIN
         e.Graphics.DrawString("Date :", f10b, Brushes.Black, 8, 115)
         e.Graphics.DrawString(timeInToPrint.ToString("dd/MM/yyyy"), f10, Brushes.Black, marginR - 8, 115, Right)
 
-        e.Graphics.DrawString(Line, f10, Brushes.Black, marginC, 130, Center)
+        e.Graphics.DrawString("Timeslot :", f10b, Brushes.Black, 8, 130)
+        If Not String.IsNullOrEmpty(tl) Then
+            e.Graphics.DrawString(tl, f10, Brushes.Black, marginR - 8, 130, Right)
+        End If
 
-        e.Graphics.DrawString("Servicename", f10b, Brushes.Black, 8, 145)
-        e.Graphics.DrawString("Price", f10b, Brushes.Black, marginR - 8, 145, Right)
+        e.Graphics.DrawString(Line, f10, Brushes.Black, marginC, 145, Center)
+
+        e.Graphics.DrawString("Servicename", f10b, Brushes.Black, 8, 160)
+        e.Graphics.DrawString("Price", f10b, Brushes.Black, marginR - 8, 160, Right)
 
         If Not String.IsNullOrEmpty(staffNameToPrint) Then
-            e.Graphics.DrawString(Service, f10, Brushes.Black, marginL + 63, 170, Right)
+            e.Graphics.DrawString(Service, f10, Brushes.Black, marginL + 63, 185, Right)
         End If
 
         If Not String.IsNullOrEmpty(staffNameToPrint) Then
-            e.Graphics.DrawString(totalAmountToPrint.ToString("#,##0.00"), f10, Brushes.Black, marginR - 8, 170, Right)
+            e.Graphics.DrawString(totalAmountToPrint.ToString("#,##0.00"), f10, Brushes.Black, marginR - 8, 185, Right)
         End If
 
-        e.Graphics.DrawString(Line, f10, Brushes.Black, marginC, 190, Center)
-        e.Graphics.DrawString("Thank you", f10b, Brushes.Black, marginC, 220, Center)
+        e.Graphics.DrawString(Line, f10, Brushes.Black, marginC, 205, Center)
+        e.Graphics.DrawString("Thank you", f10b, Brushes.Black, marginC, 235, Center)
 
     End Sub
 End Class

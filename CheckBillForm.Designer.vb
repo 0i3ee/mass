@@ -27,6 +27,7 @@ Partial Class CheckBillForm
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         CType(Me.Guna2DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -34,6 +35,7 @@ Partial Class CheckBillForm
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2DataGridView1)
         Me.Guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
@@ -45,8 +47,8 @@ Partial Class CheckBillForm
         '
         'Guna2DataGridView1
         '
+        Me.Guna2DataGridView1.AllowUserToAddRows = False
         Me.Guna2DataGridView1.AllowUserToDeleteRows = False
-        Me.Guna2DataGridView1.AllowUserToOrderColumns = True
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
         Me.Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -68,11 +70,12 @@ Partial Class CheckBillForm
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
         Me.Guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2DataGridView1.Location = New System.Drawing.Point(84, 170)
+        Me.Guna2DataGridView1.Location = New System.Drawing.Point(44, 170)
         Me.Guna2DataGridView1.Name = "Guna2DataGridView1"
         Me.Guna2DataGridView1.ReadOnly = True
         Me.Guna2DataGridView1.RowHeadersVisible = False
-        Me.Guna2DataGridView1.Size = New System.Drawing.Size(748, 716)
+        Me.Guna2DataGridView1.RowHeadersWidth = 50
+        Me.Guna2DataGridView1.Size = New System.Drawing.Size(817, 716)
         Me.Guna2DataGridView1.TabIndex = 1
         Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -96,6 +99,17 @@ Partial Class CheckBillForm
         Me.Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(50, 78)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 19)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Bills"
+        '
         'CheckBillForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -106,6 +120,7 @@ Partial Class CheckBillForm
         Me.Name = "CheckBillForm"
         Me.Text = "CheckBillForm"
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
+        Me.Guna2CustomGradientPanel1.PerformLayout()
         CType(Me.Guna2DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -113,4 +128,5 @@ Partial Class CheckBillForm
 
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Guna2DataGridView1 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Label1 As Label
 End Class
