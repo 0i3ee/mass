@@ -28,6 +28,8 @@ Partial Class Home
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.HScrollBar2 = New System.Windows.Forms.HScrollBar()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,7 +57,8 @@ Partial Class Home
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(64, 392)
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(64, 420)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(113, 19)
         Me.Label3.TabIndex = 3
@@ -78,6 +81,8 @@ Partial Class Home
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.HScrollBar2)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Panel2)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.HScrollBar1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Panel1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label3)
@@ -89,6 +94,20 @@ Partial Class Home
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(933, 1046)
         Me.Guna2CustomGradientPanel1.TabIndex = 1
+        '
+        'HScrollBar2
+        '
+        Me.HScrollBar2.Location = New System.Drawing.Point(68, 697)
+        Me.HScrollBar2.Name = "HScrollBar2"
+        Me.HScrollBar2.Size = New System.Drawing.Size(367, 27)
+        Me.HScrollBar2.TabIndex = 5
+        '
+        'Panel2
+        '
+        Me.Panel2.Location = New System.Drawing.Point(68, 472)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(800, 222)
+        Me.Panel2.TabIndex = 6
         '
         'Home
         '
@@ -114,4 +133,6 @@ Partial Class Home
     Friend WithEvents Panel1 As Panel
     Friend WithEvents HScrollBar1 As HScrollBar
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
+    Friend WithEvents HScrollBar2 As HScrollBar
+    Friend WithEvents Panel2 As Panel
 End Class
