@@ -235,3 +235,4 @@ C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.vbproj.CopyComplete
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.pdb
+C:\Users\Advice\source\repos\mass3\obj\Debug\WindowsApp1.Overall.resources
