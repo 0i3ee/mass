@@ -50,7 +50,7 @@ Public Class Service
         If String.IsNullOrEmpty(Guna2TextBox1.Text) OrElse
        String.IsNullOrEmpty(Guna2TextBox3.Text) OrElse
        String.IsNullOrEmpty(Guna2TextBox2.Text) Then
-            MessageBox.Show("Please fill in all the required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
 
@@ -86,7 +86,9 @@ Public Class Service
         End Try
     End Sub
     Private Sub Service_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         ShowData()
+        Guna2DataGridView1.ClearSelection()
     End Sub
     Private Sub Clear()
         Guna2TextBox1.Clear()
@@ -97,6 +99,12 @@ Public Class Service
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         Try
+            If String.IsNullOrEmpty(Guna2TextBox1.Text) OrElse
+       String.IsNullOrEmpty(Guna2TextBox3.Text) OrElse
+       String.IsNullOrEmpty(Guna2TextBox2.Text) Then
+                MessageBox.Show("ກະລຸນາເລືອກຂໍ້ມູນທີ່ຕ້ອງການແກ້ໄຂ.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
             ' Check if there is at least one selected row
             If Guna2DataGridView1.SelectedRows.Count > 0 Then
                 ' Assuming you have a unique identifier like service_id for updating
@@ -115,7 +123,7 @@ Public Class Service
                     ' Execute the query
                     command.ExecuteNonQuery()
                 End Using
-
+                MessageBox.Show("ແກ້ໄຂສຳເລັດ.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 ' Refresh the data in Guna2DataGridView1
                 ShowData()
             Else
@@ -165,7 +173,7 @@ Public Class Service
                 ' Refresh the data in Guna2DataGridView1
                 ShowData()
             Else
-                MessageBox.Show("Please select a row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("ກະລຸນາເລືອກຂໍ້ມູນທີ່ຕ້ອງການລົບ.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
