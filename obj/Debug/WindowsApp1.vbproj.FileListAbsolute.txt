@@ -236,3 +236,14 @@ C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.exe
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.xml
 C:\Users\Advice\Source\Repos\mass3\obj\Debug\WindowsApp1.pdb
 C:\Users\Advice\source\repos\mass3\obj\Debug\WindowsApp1.Overall.resources
+C:\Users\Advice\source\repos\mass3\bin\Debug\Guna.Charts.WinForms.dll
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.dll
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Advice\source\repos\mass3\bin\Debug\Guna.Charts.WinForms.xml
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.pdb
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.xml
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Advice\source\repos\mass3\bin\Debug\LiveCharts.Wpf.xml
