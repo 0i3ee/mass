@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MyApplicationData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <MySubMain>true</MySubMain>
+<<<<<<< HEAD
   <MainForm>Form1</MainForm>
+=======
+<<<<<<< HEAD
+  <MainForm>Home</MainForm>
+=======
+  <MainForm>CheckBillForm</MainForm>
+>>>>>>> 74b935083c9628173614a36919b9e04626cdfd22
+>>>>>>> main
   <SingleInstance>false</SingleInstance>
   <ShutdownMode>0</ShutdownMode>
   <EnableVisualStyles>true</EnableVisualStyles>

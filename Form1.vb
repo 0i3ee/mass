@@ -88,4 +88,15 @@ Public Class Form1
 
         Me.Hide()
     End Sub
+
+    Private Sub txtUname_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUname.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            ' Suppress the Enter key to prevent a new line in the TextBox
+            e.SuppressKeyPress = True
+
+            ' Move focus to the next control (txtPwd)
+            txtpwd.Focus()
+        End If
+    End Sub
+
 End Class

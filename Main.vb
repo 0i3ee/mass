@@ -96,8 +96,9 @@
         panel.Show()
 
     End Sub
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
 
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         switchPanel(Home)
     End Sub
 
@@ -169,5 +170,36 @@
 
     Private Sub Guna2Button15_Click(sender As Object, e As EventArgs) Handles Guna2Button15.Click
         switchPanel(Service)
+    End Sub
+
+    Private Sub Guna2Button10_Click(sender As Object, e As EventArgs) Handles Guna2Button10.Click
+        switchPanel(Overall)
+    End Sub
+
+    Private Sub Guna2Button14_Click(sender As Object, e As EventArgs) Handles Guna2Button14.Click
+        ' Show a message box with OK and Cancel buttons
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to sign out?", "Sign Out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+
+        ' Check if the user clicked OK
+        If result = DialogResult.OK Then
+            ' Perform actions related to signing out
+
+            ' Close the current form
+            Me.Close()
+
+            ' Open the login form (replace LoginForm with the actual name of your login form)
+            Dim loginForm As New Form1()
+            loginForm.Show()
+        End If
+    End Sub
+
+    Private Sub Guna2Button11_Click(sender As Object, e As EventArgs) Handles Guna2Button11.Click
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to Exit?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+
+        ' Check if the user clicked OK
+        If result = DialogResult.OK Then
+            Application.ExitThread()
+        End If
+
     End Sub
 End Class

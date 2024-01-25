@@ -16,11 +16,23 @@ Public Class Booking
         PopulateServicesComboBox()
 <<<<<<< HEAD
         LoadTime()
+<<<<<<< HEAD
 =======
 =======
         
 >>>>>>> 0eafe1e7d732b66c32b7057d36469c512eab1f10
 >>>>>>> b39e992acda051b621c26d816a9004afa4c6465f
+=======
+
+        DateTimePicker1.Value = DateTime.Now
+        ' Disable ComboBoxes when DateTimePicker has no value
+        Guna2ComboBox1.Enabled = False
+        Guna2ComboBox3.Enabled = False
+        Guna2ComboBox4.Enabled = False
+
+
+
+>>>>>>> main
     End Sub
     Private Sub LoadTime()
         Try
@@ -164,6 +176,7 @@ Public Class Booking
     Private Sub PopulateServicesComboBox()
         Guna2ComboBox2.Items.Clear()
         Try
+
             ' Use the existing connection from the module
             ConnectDatabase()
             Dim query As String = "SELECT service_id, service_name, price FROM services"
@@ -187,6 +200,7 @@ Public Class Booking
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        Dim selectedDateTime As DateTime? = DateTimePicker1.Value
         If String.IsNullOrWhiteSpace(Guna2TextBox1.Text) Then
             MessageBox.Show("ກະລຸນາປ້ອນຊື່.")
             Return
@@ -200,6 +214,21 @@ Public Class Booking
         ' Assuming you have ComboBox named 'Guna2ComboBox1' for time slot selection
         If Guna2ComboBox2.SelectedIndex = -1 Then
             MessageBox.Show("ກະລຸນາເລືອກບໍລິການ.")
+            Return
+        End If
+        If selectedDateTime = DateTime.MinValue Then
+            ' If no date and time are selected, disable ComboBoxes
+            Guna2ComboBox1.Enabled = False
+            Guna2ComboBox2.Enabled = False
+            Guna2ComboBox4.Enabled = False
+        Else
+            ' If a date and time are selected, enable ComboBoxes
+            Guna2ComboBox1.Enabled = True
+            Guna2ComboBox2.Enabled = True
+            Guna2ComboBox4.Enabled = True
+        End If
+        If selectedDateTime IsNot Nothing AndAlso selectedDateTime.Value.Date < DateTime.Now.Date Then
+            MessageBox.Show("ກະລຸນາເລືອກວັນທີໃຫ້ຖືກຕ້ອງ")
             Return
         End If
         If Guna2ComboBox3.SelectedIndex = -1 Then
@@ -260,6 +289,9 @@ Public Class Booking
                             bookingCommand.ExecuteNonQuery()
                             ClearComboBoxes()
                             ClearTextBoxes()
+                            Guna2ComboBox1.Enabled = False
+                            Guna2ComboBox3.Enabled = False
+                            Guna2ComboBox4.Enabled = False
 
                         End Using
                     End Using
@@ -370,6 +402,7 @@ Public Class Booking
                "FROM time_slots " &
                "LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id " &
                "LEFT JOIN staff ON bookings.staff_id = staff.staff_id " &
+<<<<<<< HEAD
                "WHERE time_slots.time_id = @SelectedTime AND (bookings.Datemassage != @SelectedDate OR bookings.Datemassage IS NULL);"
 =======
 
@@ -378,6 +411,9 @@ Public Class Booking
 
             ' Using a MySqlCommand to execute the query
 >>>>>>> 0eafe1e7d732b66c32b7057d36469c512eab1f10
+=======
+               "WHERE time_slots.time_id = @SelectedTime OR (bookings.Datemassage != @SelectedDate AND bookings.Datemassage IS NULL);"
+>>>>>>> main
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
                 cmd.Parameters.AddWithValue("@selectedstaff", selectedstaff)
@@ -428,15 +464,25 @@ Public Class Booking
         ConnectDatabase()
 
         Try
-            Dim selectedTimeID As String = If(Guna2ComboBox3.SelectedItem IsNot Nothing, Guna2ComboBox3.SelectedItem.ToString(), "")
+            ' Check if a time is selected in Guna2ComboBox3
+            If Guna2ComboBox3.SelectedItem IsNot Nothing Then
+                Dim selectedTimeID As String = Guna2ComboBox3.SelectedItem.ToString()
 
-            Dim timeslotquery As String = "SELECT time_id FROM time WHERE Time_name = @SelectedStaffName"
-            Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
-                timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedTimeID)
-                Dim selectedTime As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
+                Dim timeslotquery As String = "SELECT time_id FROM time WHERE Time_name = @SelectedStaffName"
+                Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
+                    timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedTimeID)
+                    Dim selectedTime As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
 
-                PopulateStaffComboBox(selectedTime, selectedDay)
-            End Using
+                    ' Enable Guna2ComboBox1 since a time is selected
+                    Guna2ComboBox1.Enabled = True
+
+                    ' Populate Guna2ComboBox1 based on the selected time and day
+                    PopulateStaffComboBox(selectedTime, selectedDay)
+                End Using
+            Else
+                ' If no time is selected, disable Guna2ComboBox1
+                Guna2ComboBox1.Enabled = False
+            End If
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         Finally
@@ -446,6 +492,7 @@ Public Class Booking
         End Try
 
 <<<<<<< HEAD
+
 
 
     End Sub
@@ -512,6 +559,7 @@ Public Class Booking
 
 <<<<<<< HEAD
     Public Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+<<<<<<< HEAD
         selectedDay = DateTimePicker1.Value.ToString("dddd")
 =======
 
@@ -561,24 +609,55 @@ Public Class Booking
         ' You can use the selected day in other parts of your code if needed
         Dim selectedDay As String = DateTimePicker1.Value.ToString("dddd")
 >>>>>>> 0eafe1e7d732b66c32b7057d36469c512eab1f10
+=======
+        ' Declare selectedDateTime as nullable DateTime
+        Dim selectedDateTime As DateTime? = DateTimePicker1.Value
+
+        ' Update selectedDay when the DateTimePicker value changes
+        selectedDay = If(selectedDateTime.HasValue, selectedDateTime.Value.ToString("dddd"), "")
+
+        ' Enable ComboBoxes when DateTimePicker has a selected date
+        If selectedDateTime Is Nothing OrElse selectedDateTime = DateTime.MinValue Then
+            Guna2ComboBox1.Enabled = False
+
+            Guna2ComboBox3.Enabled = False  ' Enable Guna2ComboBox3
+            Guna2ComboBox4.Enabled = False
+
+        Else
+
+
+            Guna2ComboBox3.Enabled = True  ' Enable Guna2ComboBox3
+
+        End If
+>>>>>>> main
     End Sub
 
-    Private Sub Guna2ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox1.SelectedIndexChanged
 
+    Private Sub Guna2ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox1.SelectedIndexChanged
 
         Dim selectedstaff As String = If(Guna2ComboBox1.SelectedItem IsNot Nothing, Guna2ComboBox1.SelectedItem.ToString(), "")
         ConnectDatabase()
 
         Try
+            ' Check if a time is selected in Guna2ComboBox3
             Dim selectedTimeID As String = If(Guna2ComboBox3.SelectedItem IsNot Nothing, Guna2ComboBox3.SelectedItem.ToString(), "")
 
-            Dim timeslotquery As String = "SELECT time_id FROM time WHERE Time_name = @SelectedStaffName"
-            Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
-                timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedTimeID)
-                Dim selectedTime As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
+            If Not String.IsNullOrWhiteSpace(selectedTimeID) Then
+                Dim timeslotquery As String = "SELECT time_id FROM time WHERE Time_name = @SelectedStaffName"
+                Using timeslotcommand As MySqlCommand = New MySqlCommand(timeslotquery, conn)
+                    timeslotcommand.Parameters.AddWithValue("@SelectedStaffName", selectedTimeID)
+                    Dim selectedTime As Integer = Convert.ToInt32(timeslotcommand.ExecuteScalar())
 
-                LoadTimeslot(selectedTime, selectedstaff)
-            End Using
+                    ' Enable Guna2ComboBox4 since a time is selected
+                    Guna2ComboBox4.Enabled = True
+
+                    ' Load data into Guna2ComboBox4 based on the selected time and staff
+                    LoadTimeslot(selectedTime, selectedstaff)
+                End Using
+            Else
+                ' If no time is selected, disable Guna2ComboBox4
+                Guna2ComboBox4.Enabled = False
+            End If
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         Finally
@@ -587,6 +666,11 @@ Public Class Booking
             End If
         End Try
 
+
+
+    End Sub
+
+    Private Sub Guna2ComboBox4_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox4.SelectedIndexChanged
 
     End Sub
 End Class
