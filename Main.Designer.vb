@@ -417,7 +417,7 @@ Partial Class Main
     Friend WithEvents Guna2Button10 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents Guna2Button15 As Guna.UI2.WinForms.Guna2Button
+    Public WithEvents Panel1 As Panel
 End Class

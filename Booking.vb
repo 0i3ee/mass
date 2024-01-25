@@ -254,28 +254,38 @@ Public Class Booking
     End Sub
     Private Sub LoadTimeslot(selectedTime As String, selectedstaff As String)
         Try
+
             ' Use the existing connection from the module
             ConnectDatabase()
-            Dim daytime As DateTime = DateTimePicker1.Value
-            Dim formattedDateTime As String = daytime.ToString("yyyy-MM-dd")
-            Dim query As String = "SELECT time_slots.time_slot " &
-               "FROM time_slots " &
-               "LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id " &
-               "LEFT JOIN staff ON bookings.staff_id = staff.staff_id " &
-               "WHERE time_slots.time_id = @SelectedTime OR (bookings.Datemassage != @SelectedDate AND bookings.Datemassage IS NULL);"
-            Using cmd As New MySqlCommand(query, conn)
-                cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
-                cmd.Parameters.AddWithValue("@selectedstaff", selectedstaff)
-                cmd.Parameters.AddWithValue("@SelectedDate", formattedDateTime)
-                ' Using a MySqlDataReader to read the results of the query
-                Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    ' Clear existing items in the combo box
-                    Guna2ComboBox4.Items.Clear()
-                    ' Loop through the records and add each time slot to the combo box
-                    While reader.Read()
-                        Dim time_slot As String = reader("time_slot").ToString()
-                        Guna2ComboBox4.Items.Add(time_slot)
-                    End While
+
+            Dim selectedstaffid As String = "SELECT staff_id FROM staff WHERE Name = @SelectedStaffName"
+            Using staffidcommand As MySqlCommand = New MySqlCommand(selectedstaffid, conn)
+                staffidcommand.Parameters.AddWithValue("@SelectedStaffName", selectedstaff)
+                Dim staffID As Integer = Convert.ToInt32(staffidcommand.ExecuteScalar())
+
+                Dim daytime As DateTime = DateTimePicker1.Value
+                Dim formattedDateTime As String = daytime.ToString("yyyy-MM-dd")
+                Dim query As String = "SELECT time_slots.time_slot_id FROM time_slots 
+                LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id 
+                LEFT JOIN staff ON staff.time_id = time_slots.time_id 
+                LEFT JOIN time ON staff.time_id = time.time_id 
+                WHERE time_slots.time_id = @SelectedTime 
+                OR staff.staff_id = @selectedstaff;"
+
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
+                    cmd.Parameters.AddWithValue("@selectedstaff", staffID)
+                    cmd.Parameters.AddWithValue("@SelectedDate", formattedDateTime)
+                    ' Using a MySqlDataReader to read the results of the query
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        ' Clear existing items in the combo box
+                        Guna2ComboBox4.Items.Clear()
+                        ' Loop through the records and add each time slot to the combo box
+                        While reader.Read()
+                            Dim time_slot As String = reader("time_slot").ToString()
+                            Guna2ComboBox4.Items.Add(time_slot)
+                        End While
+                    End Using
                 End Using
             End Using
         Catch ex As Exception
@@ -387,6 +397,7 @@ Public Class Booking
         ConnectDatabase()
 
         Try
+
             ' Check if a time is selected in Guna2ComboBox3
             Dim selectedTimeID As String = If(Guna2ComboBox3.SelectedItem IsNot Nothing, Guna2ComboBox3.SelectedItem.ToString(), "")
 

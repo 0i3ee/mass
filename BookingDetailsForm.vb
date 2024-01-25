@@ -3,12 +3,15 @@ Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 
 Public Class BookingDetailsForm
-    Private _bookingId As Integer
 
-    Public Sub New(bookingId As Integer)
+    Private _bookingId As Integer
+    Sub New(bookingId As Integer)
         InitializeComponent()
         _bookingId = bookingId
     End Sub
+
+
+
 
     Private Sub BookingDetailsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -25,7 +28,7 @@ Public Class BookingDetailsForm
 
     Public Sub LoadLabel()
         Try
-            Dim Nquery As String = "SELECT customer_name, customer_phone, time_slot_id, booking_date, Datemassage, service_id, staff_id, Status FROM bookings WHERE booking_id = @BookingId"
+            Dim Nquery As String = "SELECT customer_name, customer_phone, time_slot_id, booking_date, Datemassage, service_id, staff_id, Status FROM bookings WHERE booking_id = @BookingId "
 
             Using command As New MySqlCommand(Nquery, conn)
                 command.Parameters.AddWithValue("@BookingId", _bookingId.ToString())
@@ -117,6 +120,7 @@ Public Class BookingDetailsForm
         End Try
     End Function
 
+
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Dim bookingIdToDelete As Integer = _bookingId
 
@@ -126,9 +130,11 @@ Public Class BookingDetailsForm
             If result = DialogResult.Yes Then
                 ' Insert into the bill table
                 Dim bookingInfo As New Dictionary(Of String, Object)()
+
                 Using connection As New MySqlConnection(conn.ConnectionString)
                     connection.Open()
 
+                    ' Retrieve booking information
                     Dim selectQuery As String = "SELECT * FROM bookings WHERE booking_id = @ID;"
                     Using selectCommand As New MySqlCommand(selectQuery, connection)
                         selectCommand.Parameters.AddWithValue("@ID", bookingIdToDelete)
@@ -143,22 +149,68 @@ Public Class BookingDetailsForm
                         End Using
                     End Using
 
-                    Dim insertQuery As String = "INSERT INTO bills (booking_id, total_amount, payment_status) VALUES (@BookingID, @TotalAmount, @PaymentStatus);"
-                    Using insertCommand As New MySqlCommand(insertQuery, connection)
-                        insertCommand.Parameters.AddWithValue("@BookingID", bookingInfo("booking_id"))
-                        insertCommand.Parameters.AddWithValue("@TotalAmount", 0)
-                        insertCommand.Parameters.AddWithValue("@PaymentStatus", "unpaid")
-                        insertCommand.ExecuteNonQuery()
-                    End Using
-                End Using
+                    ' Check if the dictionary contains the "service_id" key
+                    If bookingInfo.ContainsKey("service_id") Then
+                        ' Retrieve the service price based on service_id
+                        Dim serviceId As Integer = Convert.ToInt32(bookingInfo("service_id"))
 
+                        Dim servicePriceQuery As String = "SELECT price FROM services WHERE service_id = @ServiceId"
+                        Using serviceCommand As MySqlCommand = New MySqlCommand(servicePriceQuery, connection)
+                            serviceCommand.Parameters.AddWithValue("@ServiceId", serviceId)
+                            Dim servicePrice As Decimal = Convert.ToDecimal(serviceCommand.ExecuteScalar())
+
+                            Dim insertQuery As String = "INSERT INTO bills (booking_id, total_amount, payment_status) VALUES (@BookingID, @TotalAmount, @PaymentStatus);"
+                            Using insertCommand As New MySqlCommand(insertQuery, connection)
+
+                                ' Use a transaction to ensure atomicity
+                                Using transaction As MySqlTransaction = connection.BeginTransaction()
+                                    Try
+                                        ' Assign parameters for the insert command
+                                        insertCommand.Parameters.AddWithValue("@BookingID", bookingInfo("booking_id"))
+                                        insertCommand.Parameters.AddWithValue("@TotalAmount", servicePrice)
+                                        insertCommand.Parameters.AddWithValue("@PaymentStatus", "unpaid")
+
+                                        ' Execute the insert command
+                                        insertCommand.ExecuteNonQuery()
+
+                                        transaction.Commit()
+
+                                        CheckBillForm.ShowDialog()
+                                        Me.Close()
+
+                                    Catch ex As Exception
+                                        ' Rollback the transaction if an exception occurs
+                                        transaction.Rollback()
+
+                                        MessageBox.Show("Error inserting into bills: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    End Try
+                                End Using
+                            End Using
+                        End Using
+                    Else
+                        MessageBox.Show("The 'service_id' key is not present in the dictionary.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+
+                    Dim updateStatusQuery As String = "UPDATE bookings SET Status = 'END' WHERE booking_id = @ID;"
+                    Using updateStatusCommand As New MySqlCommand(updateStatusQuery, connection)
+                        updateStatusCommand.Parameters.AddWithValue("@ID", bookingIdToDelete)
+                        updateStatusCommand.ExecuteNonQuery()
+                    End Using
+
+
+                End Using
             Else
                 MessageBox.Show("Operation canceled.")
             End If
         Catch ex As Exception
             MessageBox.Show("Error processing data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
+
+
     End Sub
+
+
 
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
