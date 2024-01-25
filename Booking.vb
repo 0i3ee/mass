@@ -262,7 +262,7 @@ Public Class Booking
                "FROM time_slots " &
                "LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id " &
                "LEFT JOIN staff ON bookings.staff_id = staff.staff_id " &
-               "WHERE time_slots.time_id = @SelectedTime AND (bookings.Datemassage != @SelectedDate OR bookings.Datemassage IS NULL);"
+               "WHERE time_slots.time_id = @SelectedTime OR (bookings.Datemassage != @SelectedDate AND bookings.Datemassage IS NULL);"
             Using cmd As New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
                 cmd.Parameters.AddWithValue("@selectedstaff", selectedstaff)
