@@ -117,6 +117,7 @@ Public Class BookingDetailsForm
         End Try
     End Function
 
+
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Dim bookingIdToDelete As Integer = _bookingId
 
@@ -126,9 +127,11 @@ Public Class BookingDetailsForm
             If result = DialogResult.Yes Then
                 ' Insert into the bill table
                 Dim bookingInfo As New Dictionary(Of String, Object)()
+
                 Using connection As New MySqlConnection(conn.ConnectionString)
                     connection.Open()
 
+                    ' Retrieve booking information
                     Dim selectQuery As String = "SELECT * FROM bookings WHERE booking_id = @ID;"
                     Using selectCommand As New MySqlCommand(selectQuery, connection)
                         selectCommand.Parameters.AddWithValue("@ID", bookingIdToDelete)
@@ -143,23 +146,83 @@ Public Class BookingDetailsForm
                         End Using
                     End Using
 
-                    Dim insertQuery As String = "INSERT INTO bills (booking_id, total_amount, payment_status) VALUES (@BookingID, @TotalAmount, @PaymentStatus);"
-                    Using insertCommand As New MySqlCommand(insertQuery, connection)
-                        insertCommand.Parameters.AddWithValue("@BookingID", bookingInfo("booking_id"))
-                        insertCommand.Parameters.AddWithValue("@TotalAmount", 0)
-                        insertCommand.Parameters.AddWithValue("@PaymentStatus", "unpaid")
-                        insertCommand.ExecuteNonQuery()
-                    End Using
-                End Using
+                    ' Check if the dictionary contains the "service_id" key
+                    If bookingInfo.ContainsKey("service_id") Then
+                        ' Retrieve the service price based on service_id
+                        Dim serviceId As Integer = Convert.ToInt32(bookingInfo("service_id"))
+                        MessageBox.Show($"Service ID: {serviceId}", "Service Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
+                        ' Retrieve the service price from the services table
+                        Dim servicePriceQuery As String = "SELECT price FROM services WHERE service_id = @ServiceId"
+                        Using serviceCommand As MySqlCommand = New MySqlCommand(servicePriceQuery, connection)
+                            serviceCommand.Parameters.AddWithValue("@ServiceId", serviceId)
+                            Dim servicePrice As Decimal = Convert.ToDecimal(serviceCommand.ExecuteScalar())
+
+                            ' Insert into the bills table
+                            Dim insertQuery As String = "INSERT INTO bills (booking_id, total_amount, payment_status) VALUES (@BookingID, @TotalAmount, @PaymentStatus);"
+                            Using insertCommand As New MySqlCommand(insertQuery, connection)
+
+                                ' Use a transaction to ensure atomicity
+                                Using transaction As MySqlTransaction = connection.BeginTransaction()
+                                    Try
+                                        ' Assign parameters for the insert command
+                                        insertCommand.Parameters.AddWithValue("@BookingID", bookingInfo("booking_id"))
+                                        insertCommand.Parameters.AddWithValue("@TotalAmount", servicePrice)
+                                        insertCommand.Parameters.AddWithValue("@PaymentStatus", "unpaid")
+
+                                        ' Execute the insert command
+                                        insertCommand.ExecuteNonQuery()
+
+                                        ' Commit the transaction if everything is successful
+                                        transaction.Commit()
+                                        switchPanel(CheckBillForm)
+                                    Catch ex As Exception
+                                        ' Rollback the transaction if an exception occurs
+                                        transaction.Rollback()
+
+                                        MessageBox.Show("Error inserting into bills: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    End Try
+                                End Using
+                            End Using
+                        End Using
+                    Else
+                        MessageBox.Show("The 'service_id' key is not present in the dictionary.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End Using
             Else
                 MessageBox.Show("Operation canceled.")
             End If
         Catch ex As Exception
             MessageBox.Show("Error processing data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
 
+
+
+    End Sub
+    Sub switchPanel(ByVal panel As Form)
+
+        If Edit IsNot Nothing AndAlso Edit.Visible AndAlso Not Edit.IsDisposed Then
+            Edit.Close()
+        End If
+        If Delete IsNot Nothing AndAlso Delete.Visible AndAlso Not Delete.IsDisposed Then
+            Delete.Close()
+        End If
+        If list IsNot Nothing AndAlso list.Visible AndAlso Not list.IsDisposed Then
+            list.Close()
+        End If
+        If Booking IsNot Nothing AndAlso Booking.Visible AndAlso Not Booking.IsDisposed Then
+            Booking.Close()
+        End If
+        If Home IsNot Nothing AndAlso Home.Visible AndAlso Not Home.IsDisposed Then
+            Home.Close()
+        End If
+
+        Guna2CustomGradientPanel1.Controls.Clear()
+        panel.TopLevel = False
+        Guna2CustomGradientPanel1.Controls.Add(panel)
+        panel.Show()
+
+    End Sub
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         Dim idToDelete As Integer = _bookingId
