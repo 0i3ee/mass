@@ -32,11 +32,11 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-<<<<<<< HEAD
+
             Me.MainForm = Global.WindowsApp1.Home
-=======
+
             Me.MainForm = Global.WindowsApp1.CheckBillForm
->>>>>>> 74b935083c9628173614a36919b9e04626cdfd22
+
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
