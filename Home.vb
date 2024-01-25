@@ -11,6 +11,8 @@ Public Class Home
         ConnectDatabase()
         LoadButtonsFromDatabase()
         Panel1.AutoScroll = True
+        Me.Guna2Button2.Visible = True
+        Me.Guna2Button2.Location = New System.Drawing.Point(803, 62)
 
         checkBillPanel = New Panel()
         checkBillPanel.Dock = DockStyle.Right
@@ -25,6 +27,7 @@ Public Class Home
     End Sub
 
     Private Sub LoadButtonsFromDatabase()
+        Panel1.Controls.Clear()
         Try
             Dim query As String = "SELECT booking_id, customer_name, service_id, time_slot_id, Status FROM bookings"
             Using command As New MySqlCommand(query, conn)
@@ -70,7 +73,6 @@ Public Class Home
 
     Private Sub ShowCheckBillDetails(clickedButton As Button)
         Dim bookingId As Integer = Convert.ToInt32(clickedButton.Text.Split(" "c)(1))
-
         Dim bookingDetailsForm As New BookingDetailsForm(bookingId)
         bookingDetailsForm.ShowDialog()
     End Sub
@@ -146,4 +148,7 @@ Public Class Home
         End Try
     End Function
 
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        LoadButtonsFromDatabase()
+    End Sub
 End Class
