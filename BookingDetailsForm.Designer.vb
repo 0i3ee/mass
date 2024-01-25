@@ -183,7 +183,6 @@ Partial Class BookingDetailsForm
         Me.ClientSize = New System.Drawing.Size(535, 511)
         Me.Controls.Add(Me.Guna2CustomGradientPanel1)
         Me.Name = "BookingDetailsForm"
-        Me.Text = "detail"
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
         Me.Guna2CustomGradientPanel1.PerformLayout()
         Me.ResumeLayout(False)
