@@ -5,9 +5,11 @@ Module Module1
     Public da As New MySqlDataAdapter
     Public ds As New DataSet
     Public cmd As New MySqlCommand
+
     Public dr As MySqlDataReader
     Public username As String = ""
     Public userauthor As String = ""
+
 
     Public Sub ConnectDatabase()
         If conn.State = ConnectionState.Open Then

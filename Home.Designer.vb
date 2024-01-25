@@ -25,6 +25,7 @@ Partial Class Home
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -52,6 +53,7 @@ Partial Class Home
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2Button2)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Panel1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label3)
         Me.Guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -61,6 +63,25 @@ Partial Class Home
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(933, 1046)
         Me.Guna2CustomGradientPanel1.TabIndex = 1
+        '
+        'Guna2Button2
+        '
+        Me.Guna2Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.Guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.Guna2Button2.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Guna2Button2.ForeColor = System.Drawing.Color.White
+        Me.Guna2Button2.Image = Global.WindowsApp1.My.Resources.Resources.refresh2
+        Me.Guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.Guna2Button2.ImageSize = New System.Drawing.Size(50, 50)
+        Me.Guna2Button2.Location = New System.Drawing.Point(803, 62)
+        Me.Guna2Button2.Name = "Guna2Button2"
+        Me.Guna2Button2.Size = New System.Drawing.Size(70, 62)
+        Me.Guna2Button2.TabIndex = 45
+        Me.Guna2Button2.UseTransparentBackground = True
         '
         'Panel1
         '
@@ -91,4 +112,5 @@ Partial Class Home
     Friend WithEvents Label3 As Label
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Panel1 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
 End Class
