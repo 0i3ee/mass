@@ -254,3 +254,14 @@ C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\obj\Debug\WindowsApp1.Ove
 >>>>>>> main
 >>>>>>> 0ac533aa1bbaedff018851c984ac024bce5a6ac5
 C:\Users\Advice\source\repos\mass3\obj\Debug\WindowsApp1.BookingDetailsForm.resources
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\Guna.Charts.WinForms.dll
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.dll
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\Guna.Charts.WinForms.xml
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.pdb
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.xml
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\LEGION 5 Pro\source\repos\Massage\WindowsApp1\bin\Debug\LiveCharts.Wpf.xml
