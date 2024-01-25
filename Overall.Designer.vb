@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Overall
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,25 +20,21 @@ Partial Class Overall
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2TextBox6 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.CartesianChart1 = New LiveCharts.WinForms.CartesianChart()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.CartesianChart1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.ComboBox1)
-        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Chart1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2TextBox6)
         Me.Guna2CustomGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -56,34 +52,17 @@ Partial Class Overall
         '
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Services", "Day"})
-        Me.ComboBox1.Location = New System.Drawing.Point(128, 95)
+        Me.ComboBox1.Items.AddRange(New Object() {"Services", "Day", "Income/Day"})
+        Me.ComboBox1.Location = New System.Drawing.Point(33, 112)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(260, 32)
         Me.ComboBox1.TabIndex = 13
-        '
-        'Chart1
-        '
-        Me.Chart1.BackColor = System.Drawing.Color.Transparent
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(51, 209)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(863, 622)
-        Me.Chart1.TabIndex = 12
-        Me.Chart1.Text = "Chart1"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Location = New System.Drawing.Point(72, 61)
+        Me.Label1.Location = New System.Drawing.Point(29, 60)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(64, 20)
         Me.Label1.TabIndex = 11
@@ -109,6 +88,14 @@ Partial Class Overall
         Me.Guna2TextBox6.Size = New System.Drawing.Size(286, 48)
         Me.Guna2TextBox6.TabIndex = 10
         '
+        'CartesianChart1
+        '
+        Me.CartesianChart1.Location = New System.Drawing.Point(33, 228)
+        Me.CartesianChart1.Name = "CartesianChart1"
+        Me.CartesianChart1.Size = New System.Drawing.Size(885, 628)
+        Me.CartesianChart1.TabIndex = 14
+        Me.CartesianChart1.Text = "CartesianChart1"
+        '
         'Overall
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -120,14 +107,13 @@ Partial Class Overall
         Me.Text = "Overall"
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
         Me.Guna2CustomGradientPanel1.PerformLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents Label1 As Label
     Friend WithEvents Guna2TextBox6 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CartesianChart1 As LiveCharts.WinForms.CartesianChart
 End Class
