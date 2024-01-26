@@ -27,6 +27,7 @@ Partial Class Home
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,6 +54,7 @@ Partial Class Home
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.DateTimePicker1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Guna2Button2)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Panel1)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label3)
@@ -77,7 +79,7 @@ Partial Class Home
         Me.Guna2Button2.Image = Global.WindowsApp1.My.Resources.Resources.refresh2
         Me.Guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.Guna2Button2.ImageSize = New System.Drawing.Size(50, 50)
-        Me.Guna2Button2.Location = New System.Drawing.Point(803, 62)
+        Me.Guna2Button2.Location = New System.Drawing.Point(803, 46)
         Me.Guna2Button2.Name = "Guna2Button2"
         Me.Guna2Button2.Size = New System.Drawing.Size(70, 62)
         Me.Guna2Button2.TabIndex = 45
@@ -85,10 +87,20 @@ Partial Class Home
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Location = New System.Drawing.Point(71, 131)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(802, 833)
         Me.Panel1.TabIndex = 4
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.Location = New System.Drawing.Point(540, 62)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 31)
+        Me.DateTimePicker1.TabIndex = 46
         '
         'Home
         '
@@ -113,4 +125,5 @@ Partial Class Home
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class

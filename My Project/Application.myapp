@@ -9,6 +9,10 @@
 =======
   <MainForm>CheckBillForm</MainForm>
 >>>>>>> 74b935083c9628173614a36919b9e04626cdfd22
+<<<<<<< HEAD
+>>>>>>> main
+=======
+>>>>>>> e32f688ff1341ef861ee2cd32ec04e17d9eae87c
 >>>>>>> main
   <SingleInstance>false</SingleInstance>
   <ShutdownMode>0</ShutdownMode>

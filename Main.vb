@@ -3,6 +3,9 @@
     Dim Employsidebar As String = "Close"
     Dim bilsidebar As String = "Close"
     Private _userRole As String
+
+
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         CustomizeUI(userRole)
@@ -72,7 +75,8 @@
     Private Sub Guna2Button9_Click(sender As Object, e As EventArgs) Handles Guna2Button9.Click
         switchPanel(bill_History)
     End Sub
-    Sub switchPanel(ByVal panel As Form)
+
+    Public Sub switchPanel(ByVal panel As Form)
 
         If Edit IsNot Nothing AndAlso Edit.Visible AndAlso Not Edit.IsDisposed Then
             Edit.Close()
@@ -91,11 +95,15 @@
         End If
 
         Panel1.Controls.Clear()
-        panel.TopLevel = False
-        Panel1.Controls.Add(panel)
-        panel.Show()
+        Dim newForm As Form = DirectCast(Activator.CreateInstance(panel.GetType()), Form)
+        newForm.TopLevel = False
+        Panel1.Controls.Add(newForm)
+        newForm.Show()
+
 
     End Sub
+
+
 
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
