@@ -167,7 +167,7 @@ JOIN
     bookings bo ON b.booking_id = bo.booking_id
 JOIN
     services s ON bo.service_id = s.service_id
-JOINxam
+JOIN
     staff st ON bo.staff_id = st.staff_id 
 JOIN
     time_slots tl ON bo.time_slot_id = tl.time_slot_id

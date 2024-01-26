@@ -38,13 +38,16 @@ Partial Class Main
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.leftside.SuspendLayout()
         Me.emsidebar.SuspendLayout()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
@@ -82,6 +85,8 @@ Partial Class Main
         Me.Guna2Button15.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button15.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button15.Image = Global.WindowsApp1.My.Resources.Resources.service
+        Me.Guna2Button15.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button15.Location = New System.Drawing.Point(0, 421)
         Me.Guna2Button15.Name = "Guna2Button15"
         Me.Guna2Button15.Size = New System.Drawing.Size(240, 45)
@@ -100,6 +105,8 @@ Partial Class Main
         Me.Guna2Button14.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button14.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button14.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button14.Image = Global.WindowsApp1.My.Resources.Resources.logout
+        Me.Guna2Button14.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button14.Location = New System.Drawing.Point(0, 951)
         Me.Guna2Button14.Name = "Guna2Button14"
         Me.Guna2Button14.Size = New System.Drawing.Size(240, 45)
@@ -118,6 +125,8 @@ Partial Class Main
         Me.Guna2Button11.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button11.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button11.Image = Global.WindowsApp1.My.Resources.Resources.edit
+        Me.Guna2Button11.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button11.Location = New System.Drawing.Point(0, 996)
         Me.Guna2Button11.Name = "Guna2Button11"
         Me.Guna2Button11.Size = New System.Drawing.Size(240, 45)
@@ -136,6 +145,8 @@ Partial Class Main
         Me.Guna2Button10.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button10.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button10.Image = Global.WindowsApp1.My.Resources.Resources.garph
+        Me.Guna2Button10.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button10.Location = New System.Drawing.Point(0, 376)
         Me.Guna2Button10.Name = "Guna2Button10"
         Me.Guna2Button10.Size = New System.Drawing.Size(240, 45)
@@ -154,6 +165,8 @@ Partial Class Main
         Me.Guna2Button9.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button9.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button9.Image = Global.WindowsApp1.My.Resources.Resources.bill
+        Me.Guna2Button9.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button9.Location = New System.Drawing.Point(0, 331)
         Me.Guna2Button9.Name = "Guna2Button9"
         Me.Guna2Button9.Size = New System.Drawing.Size(240, 45)
@@ -185,6 +198,8 @@ Partial Class Main
         Me.Guna2Button8.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button8.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button8.Image = Global.WindowsApp1.My.Resources.Resources.delete
+        Me.Guna2Button8.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button8.Location = New System.Drawing.Point(0, 105)
         Me.Guna2Button8.Name = "Guna2Button8"
         Me.Guna2Button8.Size = New System.Drawing.Size(240, 40)
@@ -203,6 +218,8 @@ Partial Class Main
         Me.Guna2Button7.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button7.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button7.Image = Global.WindowsApp1.My.Resources.Resources.edit
+        Me.Guna2Button7.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button7.Location = New System.Drawing.Point(0, 70)
         Me.Guna2Button7.Name = "Guna2Button7"
         Me.Guna2Button7.Size = New System.Drawing.Size(240, 35)
@@ -221,6 +238,8 @@ Partial Class Main
         Me.Guna2Button6.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button6.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button6.Image = Global.WindowsApp1.My.Resources.Resources.add
+        Me.Guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button6.Location = New System.Drawing.Point(0, 35)
         Me.Guna2Button6.Name = "Guna2Button6"
         Me.Guna2Button6.Size = New System.Drawing.Size(240, 35)
@@ -239,6 +258,8 @@ Partial Class Main
         Me.Guna2Button5.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button5.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button5.Image = Global.WindowsApp1.My.Resources.Resources.list
+        Me.Guna2Button5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button5.Location = New System.Drawing.Point(0, 0)
         Me.Guna2Button5.Name = "Guna2Button5"
         Me.Guna2Button5.Size = New System.Drawing.Size(240, 35)
@@ -257,6 +278,8 @@ Partial Class Main
         Me.Guna2Button4.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2Button4.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button4.Image = Global.WindowsApp1.My.Resources.Resources.employee
+        Me.Guna2Button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button4.Location = New System.Drawing.Point(0, 135)
         Me.Guna2Button4.Name = "Guna2Button4"
         Me.Guna2Button4.Size = New System.Drawing.Size(240, 45)
@@ -275,6 +298,8 @@ Partial Class Main
         Me.Guna2Button3.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2Button3.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button3.Image = Global.WindowsApp1.My.Resources.Resources.booking
+        Me.Guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button3.Location = New System.Drawing.Point(0, 90)
         Me.Guna2Button3.Name = "Guna2Button3"
         Me.Guna2Button3.Size = New System.Drawing.Size(240, 45)
@@ -293,6 +318,8 @@ Partial Class Main
         Me.Guna2Button2.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer), CType(CType(217, Byte), Integer))
         Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2Button2.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Button2.Image = Global.WindowsApp1.My.Resources.Resources.home
+        Me.Guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.Guna2Button2.Location = New System.Drawing.Point(0, 45)
         Me.Guna2Button2.Name = "Guna2Button2"
         Me.Guna2Button2.Size = New System.Drawing.Size(240, 45)
@@ -314,23 +341,6 @@ Partial Class Main
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(240, 45)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
         '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.Image = Global.WindowsApp1.My.Resources.Resources.icons8_menu_50
-        Me.Guna2Button1.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.Size = New System.Drawing.Size(61, 45)
-        Me.Guna2Button1.TabIndex = 0
-        '
         'Timer1
         '
         Me.Timer1.Interval = 10
@@ -351,6 +361,9 @@ Partial Class Main
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.Label4)
+        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Panel1)
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
@@ -378,6 +391,53 @@ Partial Class Main
         Me.Label1.Size = New System.Drawing.Size(77, 25)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Label1"
+        '
+        'Guna2Button1
+        '
+        Me.Guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.Guna2Button1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Button1.FillColor = System.Drawing.Color.Transparent
+        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
+        Me.Guna2Button1.Image = Global.WindowsApp1.My.Resources.Resources.icons8_menu_50
+        Me.Guna2Button1.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2Button1.Name = "Guna2Button1"
+        Me.Guna2Button1.Size = New System.Drawing.Size(61, 45)
+        Me.Guna2Button1.TabIndex = 0
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 158)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(354, 55)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "MR .Ninakhom"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(3, 231)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(349, 55)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "MR. Santisouk"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(11, 117)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(54, 29)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "BY:"
         '
         'Main
         '
@@ -420,4 +480,7 @@ Partial Class Main
     Friend WithEvents Label1 As Label
     Friend WithEvents Guna2Button15 As Guna.UI2.WinForms.Guna2Button
     Public WithEvents Panel1 As Panel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label4 As Label
 End Class

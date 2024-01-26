@@ -31,12 +31,36 @@
             If leftside.Width >= 240 Then
                 sidebar = "Close"
                 Timer1.Stop()
+                Guna2Button2.Text = "Home"
+                Guna2Button3.Text = "Booking"
+                Guna2Button4.Text = "Employee"
+                Guna2Button5.Text = "list"
+                Guna2Button6.Text = "ADD"
+                Guna2Button7.Text = "Edit"
+                Guna2Button8.Text = "Delete"
+                Guna2Button9.Text = "Bill"
+                Guna2Button10.Text = "Overall"
+                Guna2Button15.Text = "Service"
+                Guna2Button14.Text = "Sign out"
+                Guna2Button11.Text = "Exit"
             End If
         Else
             leftside.Width -= 10
             If leftside.Width <= 60 Then
                 sidebar = "open"
                 Timer1.Stop()
+                Guna2Button2.Text = ""
+                Guna2Button3.Text = ""
+                Guna2Button4.Text = ""
+                Guna2Button5.Text = ""
+                Guna2Button6.Text = ""
+                Guna2Button7.Text = ""
+                Guna2Button8.Text = ""
+                Guna2Button9.Text = ""
+                Guna2Button10.Text = ""
+                Guna2Button15.Text = ""
+                Guna2Button14.Text = ""
+                Guna2Button11.Text = ""
             End If
         End If
 

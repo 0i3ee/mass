@@ -82,6 +82,7 @@ Public Class Booking
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         Dim selectedDateTime As DateTime? = DateTimePicker1.Value
+
         If String.IsNullOrWhiteSpace(Guna2TextBox1.Text) Then
             MessageBox.Show("ກະລຸນາປ້ອນຊື່.")
             Return
@@ -172,7 +173,7 @@ Public Class Booking
                             Guna2ComboBox1.Enabled = False
                             Guna2ComboBox3.Enabled = False
                             Guna2ComboBox4.Enabled = False
-
+                            DateTimePicker1.Value = Date.Now()
                         End Using
                     End Using
                 End Using
@@ -280,10 +281,10 @@ Public Class Booking
                 Dim existingBookingCount As Integer = Convert.ToInt32(existingBookingCommand.ExecuteScalar())
 
                 ' If the staff has already booked the selected time slot for the selected date, display a message and exit
-                If existingBookingCount > 0 Then
-                    MessageBox.Show("This staff member has already booked the selected time slot for the selected date.")
-                    Return
-                End If
+                'If existingBookingCount > 0 Then
+                '    MessageBox.Show("This staff member has already booked the selected time slot for the selected date.")
+                '    Return
+                'End If
             End Using
 
             ' Retrieve available time slots for the selected time and staff on the selected date

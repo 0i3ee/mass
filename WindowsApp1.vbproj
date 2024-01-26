@@ -366,6 +366,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\setting.png" />
+    <None Include="Resources\3405244.png" />
+    <None Include="Resources\4742483.png" />
+    <None Include="Resources\9349889.png" />
+    <None Include="Resources\free-chart-icon-646-thumb.png" />
+    <None Include="Resources\image_processing20220209-20456-1o5iwko.png" />
+    <None Include="Resources\logout-icon-2048x2048-libuexip.png" />
+    <None Include="Resources\25694.png" />
+    <None Include="Resources\228122.png" />
+    <None Include="Resources\888710-200.png" />
+    <None Include="Resources\2460737.png" />
+    <None Include="Resources\2584894.png" />
+    <None Include="Resources\2696193-200.png" />
     <Content Include="Resources\x_icon_150997.png" />
     <None Include="Resources\x_icon_1509971.png" />
   </ItemGroup>
