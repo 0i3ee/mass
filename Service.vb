@@ -123,7 +123,9 @@ Public Class Service
                     ' Execute the query
                     command.ExecuteNonQuery()
                 End Using
-                MessageBox.Show("ແກ້ໄຂສຳເລັດ.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("ແກ້ໄຂສຳເລັດ.")
+
+
                 ' Refresh the data in Guna2DataGridView1
                 ShowData()
             Else

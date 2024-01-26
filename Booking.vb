@@ -254,38 +254,74 @@ Public Class Booking
     End Sub
     Private Sub LoadTimeslot(selectedTime As String, selectedstaff As String)
         Try
-
             ' Use the existing connection from the module
             ConnectDatabase()
 
-            Dim selectedstaffid As String = "SELECT staff_id FROM staff WHERE Name = @SelectedStaffName"
-            Using staffidcommand As MySqlCommand = New MySqlCommand(selectedstaffid, conn)
+            Dim selectedstaffid As Integer = 0
+            Dim daytime As DateTime = DateTimePicker1.Value
+            Dim formattedDateTime As String = daytime.ToString("yyyy-MM-dd")
+
+            ' Retrieve staff_id based on staff name
+            Dim selectedstaffidQuery As String = "SELECT staff_id FROM staff WHERE Name = @SelectedStaffName"
+            Using staffidcommand As MySqlCommand = New MySqlCommand(selectedstaffidQuery, conn)
                 staffidcommand.Parameters.AddWithValue("@SelectedStaffName", selectedstaff)
-                Dim staffID As Integer = Convert.ToInt32(staffidcommand.ExecuteScalar())
+                selectedstaffid = Convert.ToInt32(staffidcommand.ExecuteScalar())
+            End Using
 
-                Dim daytime As DateTime = DateTimePicker1.Value
-                Dim formattedDateTime As String = daytime.ToString("yyyy-MM-dd")
-                Dim query As String = "SELECT time_slots.time_slot_id FROM time_slots 
-                LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id 
-                LEFT JOIN staff ON staff.time_id = time_slots.time_id 
-                LEFT JOIN time ON staff.time_id = time.time_id 
-                WHERE time_slots.time_id = @SelectedTime 
-                OR staff.staff_id = @selectedstaff;"
+            ' Check the number of existing bookings for the selected staff, date, and time slot
+            Dim existingBookingQuery As String = "SELECT COUNT(*) FROM bookings 
+                                              WHERE staff_id = @SelectedStaffId 
+                                              AND time_slot_id = @SelectedTimeSlot
+                                              AND (booking_date = @SelectedDate OR Datemassage = @SelectedDate)"
+            Using existingBookingCommand As MySqlCommand = New MySqlCommand(existingBookingQuery, conn)
+                existingBookingCommand.Parameters.AddWithValue("@SelectedStaffId", selectedstaffid)
+                existingBookingCommand.Parameters.AddWithValue("@SelectedTimeSlot", selectedTime)
+                existingBookingCommand.Parameters.AddWithValue("@SelectedDate", formattedDateTime)
+                Dim existingBookingCount As Integer = Convert.ToInt32(existingBookingCommand.ExecuteScalar())
 
-                Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
-                    cmd.Parameters.AddWithValue("@selectedstaff", staffID)
-                    cmd.Parameters.AddWithValue("@SelectedDate", formattedDateTime)
-                    ' Using a MySqlDataReader to read the results of the query
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        ' Clear existing items in the combo box
-                        Guna2ComboBox4.Items.Clear()
-                        ' Loop through the records and add each time slot to the combo box
-                        While reader.Read()
-                            Dim time_slot As String = reader("time_slot").ToString()
+                ' If the staff has already booked the selected time slot for the selected date, display a message and exit
+                If existingBookingCount > 0 Then
+                    MessageBox.Show("This staff member has already booked the selected time slot for the selected date.")
+                    Return
+                End If
+            End Using
+
+            ' Retrieve available time slots for the selected time and staff on the selected date
+            Dim query As String = "SELECT time_slots.time_slot_id, time_slots.time_slot 
+                               FROM time_slots 
+                               LEFT JOIN bookings ON time_slots.time_slot_id = bookings.time_slot_id 
+                               LEFT JOIN staff ON staff.time_id = time_slots.time_id 
+                               LEFT JOIN time ON staff.time_id = time.time_id 
+                               WHERE (time_slots.time_id = @SelectedTime OR staff.staff_id = @SelectedStaffId)
+                               AND (time_slots.time_slot_id IS NULL OR time_slots.time_slot_id NOT IN 
+                                   (SELECT time_slot_id FROM bookings 
+                                    WHERE (booking_date = @SelectedDate OR Datemassage = @SelectedDate)
+                                    AND (staff_id = @SelectedStaffId OR staff_id IS NULL))
+                               AND time_slots.time_slot_id NOT IN 
+                                   (SELECT time_slot_id FROM bookings 
+                                    WHERE staff_id = @SelectedStaffId AND Status = 'End'))"
+
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@SelectedTime", selectedTime)
+                cmd.Parameters.AddWithValue("@SelectedStaffId", selectedstaffid)
+                cmd.Parameters.AddWithValue("@SelectedDate", formattedDateTime)
+
+                ' Using a MySqlDataReader to read the results of the query
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    ' Clear existing items in the combo box
+                    Guna2ComboBox4.Items.Clear()
+                    ' Loop through the records and add each available time slot to the combo box
+                    While reader.Read()
+                        Dim time_slot_id As Integer = Convert.ToInt32(reader("time_slot_id"))
+                        Dim time_slot As String = reader("time_slot").ToString()
+
+                        ' Check if the time_slot is already in the combo box
+                        If Not Guna2ComboBox4.Items.Contains(time_slot) Then
+                            ' Add the time_slot to the combo box
                             Guna2ComboBox4.Items.Add(time_slot)
-                        End While
-                    End Using
+                        End If
+                    End While
+
                 End Using
             End Using
         Catch ex As Exception
@@ -298,6 +334,12 @@ Public Class Booking
             End If
         End Try
     End Sub
+
+
+
+
+
+
 
     Public Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
 
