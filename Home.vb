@@ -26,12 +26,25 @@ Public Class Home
         conn = New MySqlConnection(connectionString)
     End Sub
 
-    Private Sub LoadButtonsFromDatabase()
+    Public Sub LoadButtonsFromDatabase()
         Panel1.Controls.Clear()
+
         Try
-            Dim query As String = "SELECT booking_id, customer_name, service_id, time_slot_id, Status FROM bookings"
+            ' Assuming there's a date_field in the bookings table
+            Dim currentDate As Date = Date.Now
+            Dim scurrentDate As Date = Date.Now ' Change this value based on your definition of "near date"
+
+            Dim query As String = "SELECT booking_id, customer_name, service_id, time_slot_id, Status 
+                                    FROM bookings 
+                                    WHERE Status = 'book' 
+                                    ORDER BY                                   
+                                      ABS(DATEDIFF(Datemassage, CURDATE())),
+                                      Datemassage ASC,
+                                    time_slot_id DESC "
+
             Using command As New MySqlCommand(query, conn)
                 conn.Open()
+                command.Parameters.AddWithValue("@NearDate", scurrentDate)
 
                 Using reader As MySqlDataReader = command.ExecuteReader()
                     While reader.Read()
@@ -62,6 +75,7 @@ Public Class Home
         button.Font = New System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         button.Size = New System.Drawing.Size(287, 198)
         button.UseVisualStyleBackColor = True
+        button.BackColor = Color.White
         button.ForeColor = Color.Black
     End Sub
 
@@ -150,5 +164,46 @@ Public Class Home
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         LoadButtonsFromDatabase()
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        Panel1.Controls.Clear()
+
+        Try
+            Dim selectedDate As Date = DateTimePicker1.Value
+            Dim formattedDate As String = selectedDate.ToString("yyyy-MM-dd")
+
+            Dim query As String = "SELECT booking_id, customer_name, service_id, time_slot_id, Status 
+                                FROM bookings 
+                                WHERE Status = 'book' AND Datemassage = @SelectedDate
+                                ORDER BY  time_slot_id DESC"
+
+            Using command As New MySqlCommand(query, conn)
+                conn.Open()
+                command.Parameters.AddWithValue("@SelectedDate", formattedDate)
+
+                Using reader As MySqlDataReader = command.ExecuteReader()
+                    While reader.Read()
+                        Dim serviceName As String = GetServiceName(reader("service_id"))
+                        Dim timeSlotName As String = GetTimeSlotName(reader("time_slot_id"))
+
+                        Dim newButton As New Button()
+                        CustomizeButtonStyle(newButton)
+                        newButton.Text = $" {reader("booking_id")} {reader("customer_name")} {serviceName} {timeSlotName} {reader("Status")}"
+                        newButton.TextAlign = ContentAlignment.MiddleLeft
+                        AddHandler newButton.Click, AddressOf Button_Click
+                        newButton.Dock = DockStyle.Top
+
+                        Panel1.Controls.Add(newButton)
+                    End While
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading buttons from database: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
     End Sub
 End Class
